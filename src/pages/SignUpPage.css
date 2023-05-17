@@ -1,0 +1,15 @@
+.centered{
+    padding: 0 0.2rem;
+
+}
+
+.NameContent{
+    display: flex;
+    gap:0 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.NameContent >*{
+    flex-grow: 1;
+}
