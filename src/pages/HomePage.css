@@ -1,0 +1,44 @@
+/* .Main-img{
+        width: 80%;
+        height: auto;
+        padding-left: 2.5rem;
+        
+ 
+} */
+.content-flex-center{
+    display: flex;
+    justify-content: center;
+}
+.main-title{
+    font-weight: 900 ;
+    font-size: 5vw;
+
+}
+.collapse-img {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .collapse-img.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .Main-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .fade-in {
+    transition: opacity 5s ease-in-out;
+  }
+  
+  .fade-in.Main-img {
+    opacity: 0;
+  }
+  
+  .fade-in.Main-img.fade-in {
+    opacity: 1;
+  }
