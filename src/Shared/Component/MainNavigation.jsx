@@ -2,13 +2,16 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button'
 import "./MainNavigation.css"
 import { useState } from 'react';
-
+import  {Dropdown}  from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
+import Button from '../FormElement/Button';
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
 function MainNavigation(props) {
-
+   const navigate= useNavigate()
+    const [showDropdown, setShowDropdown] = useState(false);
     const [isMouseOver, setisMouseOver] = useState(
         {
             Main: false,
@@ -19,7 +22,18 @@ function MainNavigation(props) {
     )
 
     const { login = true, signup = true } = props;
+    async function handleMyAccountClick(event) {
+        event.preventDefault()
+        axios.get("api/dashboard",{
 
+        })
+        .then(response=>{
+            navigate(`/${response.data.id}`, {state:{name:response.data.first_name}})
+        }
+
+        )
+        
+    }
 
     function onMouseOverHandler(event) {
 
@@ -47,67 +61,63 @@ function MainNavigation(props) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-
-                        <Nav.Link name="Main"
-                            onMouseOver={onMouseOverHandler}
-                            onMouseOut={onMouseOutHandler}
-                            className={`mx-4 option-style ${isMouseOver.Main && "menu"}`}
-
-                            href="#Meal">Today's Meal
-                        </Nav.Link>
-
-
-                       
-                            <NavDropdown title="Today's Meal" name="Main" 
-                            onMouseOver={onMouseOverHandler}
-                            onMouseOut={onMouseOutHandler}
-                            className={`mx-4 option-style ${isMouseOver.Main && "menu"}`}
-                             id="basic-nav-dropdown ">
-                            <div className='flexedbox'>
-                                <NavDropdown.Item className='flexedbox' href="#action/3.1">
-    
-                                    <Card style={{ width: '10rem', height: "15rem" }}>
-                                        <Card.Img variant="top" className='resizepicture' src="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?quality=90&resize=556,505" />
-                                        <Card.Body>
-                                            <Card.Title>Pasta</Card.Title>
-                                            <Card.Text>
-                                                Find out More...
-                                            </Card.Text>
-    
-                                        </Card.Body>
-                                    </Card>
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Item className='flexedbox' href="#action/3.2">
-                                    <Card style={{ width: '10rem', height: "15rem" }}>
-                                        <Card.Img variant="top" className='resizepicture' src="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?quality=90&resize=556,505" />
-                                        <Card.Body>
-                                            <Card.Title>Pasta</Card.Title>
-                                            <Card.Text>
-                                                Find out More...
-                                            </Card.Text>
-    
-                                        </Card.Body>
-                                    </Card>
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Item className='flexedbox' href="#action/3.2">
-                                    <Card style={{ width: '10rem', height: "15rem" }}>
-                                        <Card.Img variant="top" className='resizepicture' src="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?quality=90&resize=556,505" />
-                                        <Card.Body>
-                                            <Card.Title>Pasta</Card.Title>
-                                            <Card.Text>
-                                                Find out More...
-                                            </Card.Text>
-    
-                                        </Card.Body>
-                                    </Card>
-                                    </NavDropdown.Item>
+                        <Dropdown
+                            onMouseLeave={() => setShowDropdown(false)}
+                            onMouseOver={() => setShowDropdown(true)}
+                            // style={{ width: '166px' }}
+                        >
+                            <Dropdown.Toggle
+                                className="mx-4 option-style defaultsetting"
                                 
-                              
-                                    </div>
-                            </NavDropdown>
+                                id="dropdown-basic"
+                            >
+                                Today's Meal
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu show={showDropdown} >
+                                <div className='flexedbox'>
+                                    <Dropdown.Item href="#/action-1">
+                                    <Card style={{ width: '10rem', height: "15rem" }}>
+                                            <Card.Img variant="top" className='resizepicture' src="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?quality=90&resize=556,505" />
+                                            <Card.Body>
+                                                <Card.Title>Pasta</Card.Title>
+                                                <Card.Text>
+                                                    Find out More...
+                                                </Card.Text>
     
-                        
-                        {login && <Nav.Link name="Login"
+                                            </Card.Body>
+                                        </Card>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">
+                                    <Card style={{ width: '10rem', height: "15rem" }}>
+                                            <Card.Img variant="top" className='resizepicture' src="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?quality=90&resize=556,505" />
+                                            <Card.Body>
+                                                <Card.Title>Pasta</Card.Title>
+                                                <Card.Text>
+                                                    Find out More...
+                                                </Card.Text>
+    
+                                            </Card.Body>
+                                        </Card>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                    <Card style={{ width: '10rem', height: "15rem" }}>
+                                            <Card.Img variant="top" className='resizepicture' src="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?quality=90&resize=556,505" />
+                                            <Card.Body>
+                                                <Card.Title>Pasta</Card.Title>
+                                                <Card.Text>
+                                                    Find out More...
+                                                </Card.Text>
+    
+                                            </Card.Body>
+                                        </Card>
+                                    </Dropdown.Item>
+                                </div>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                      
+                    
+                        {!props.LoggedIN && login && <Nav.Link name="Login"
                             onMouseOver={onMouseOverHandler}
                             onMouseOut={onMouseOutHandler}
                             className={`mx-4 option-style ${isMouseOver.Login && "menu"}`}
@@ -115,7 +125,7 @@ function MainNavigation(props) {
                         </Nav.Link>
                         }
 
-                        {signup && <Nav.Link name="SignUp"
+                        { !props.LoggedIN && signup && <Nav.Link name="SignUp"
                             onMouseOver={onMouseOverHandler}
                             onMouseOut={onMouseOutHandler}
                             className={`mx-4 option-style ${isMouseOver.SignUp && "menu"}`}
@@ -127,6 +137,12 @@ function MainNavigation(props) {
                             className={`mx-4 option-style ${isMouseOver.About && "menu"}`}
                             href="#link">About
                         </Nav.Link>
+                        {props.LoggedIN &&<Nav.Link 
+                        className={`mx-4 option-style `}
+                        onClick={handleMyAccountClick}
+                        >
+                         My Account
+                        </Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

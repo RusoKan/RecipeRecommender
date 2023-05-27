@@ -17,5 +17,14 @@ body{
     font-weight: 700;
 }
 
+.flexcentered{
+  display: flex;
+  justify-content: center;
+}
+
+.btn{
+  --bs-btn-active-color: #8f3b15;
+  --bs-btn-active-bg: white;
+}
 /* #ffd54f Mushroom body */ 
 /* #a67c52 Mushroom head */

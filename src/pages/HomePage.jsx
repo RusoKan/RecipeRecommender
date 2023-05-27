@@ -4,10 +4,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import "./HomePage.css";
 import { useEffect, useState } from "react";
-
+import axios from "axios"
 function HomePage(props) {
+  const [LoggedIn,setLoggedIn]=useState(false)
   const [animate, setAnimate] = useState(false);
 
+  axios.get('/api/dashboard',
+
+  ).then(response=>{
+
+    setLoggedIn(response.data)
+  }
+  )
   useEffect(() => {
     const handleLoad = () => {
       
@@ -25,7 +33,7 @@ function HomePage(props) {
 
   return (
     <>
-      <MainNavigation />
+      <MainNavigation LoggedIN={LoggedIn}/>
       <Container fluid="md">
         <Row>
           <Col className="content-flex-center">

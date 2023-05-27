@@ -1,45 +1,34 @@
 import axios from "axios"
+import Button from "../Shared/FormElement/Button"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserNavigationBar from "../Shared/Component/UserNavigationBar";
+import {useLocation} from 'react-router-dom';
+
+
 
 function UserPage(props) {
-    const[isLoading,setIsLoading]=useState(false)
-    const[isLoggedin, setIsLoggedin]=useState(false)
-const handleLoad=(event)=>{
-    setIsLoading(true)
-    axios(
-        {
-            method: "get",
-            url: "api/dashboard"
-        }
-    ).then((response) => {
-        console.log(response.data)
-        setIsLoading(false)
-        setIsLoggedin(true)
-        if (!response.data)
-            {navigate("/login")
-        }
-            
-    })
-
-}
-    const navigate = useNavigate();
-    useEffect(() => {
-    //     // Code to run when the component mounts (page loads)
-    //     // Add your event listener here
-    //     window.addEventListener('load', handleLoad);
+    const [CurrentAccountData,setCurrentAccountData]=useState(null)
+    const [dataFetched, setDataFetched] = useState(false);
+    // const location = useLocation();
+    // const[isLoading,setIsLoading]=useState(false)
+    useEffect(()=>{
+        axios.get("/api/dashboard")
+        .then(response=>{
+            setCurrentAccountData(response.data)
+            setDataFetched(true)
+        })
+    },[])
     
-    //     // Code to clean up the event listener when the component unmounts (page unloads)
-    //     return () => {
-    //       window.removeEventListener('load', handleLoad);
-    //     };
-    handleLoad()
-      }, []);
+    
+// }
+    const navigate = useNavigate();
+
 function handleclick(event){
     axios(
         {
             method: "post",
-            url: "api/logout"
+            url: "/api/logout"
         }
     ).then((response) => {
         console.log(response.data)
@@ -47,11 +36,16 @@ function handleclick(event){
             navigate("/login")
     })
 }
+if (!dataFetched ) {
+    return <>Still loading...</>;
+  }
     
-    return isLoggedin&&<div>
-        <h1>Hello User</h1>
-        <button type="submit" onClick={handleclick}> Logout</button>
-        {isLoading &&<h2>Loading...</h2>}
+    return <div>
+    <UserNavigationBar handleclick={handleclick}/>
+    
+        <h1>Hello {CurrentAccountData.first_name} </h1>
+    
+        
         
     </div>
 

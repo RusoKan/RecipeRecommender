@@ -21,8 +21,21 @@ img{
     transform: scale(1.2);
     text-shadow: none;
   }
-  .flexedbox{
+.flexedbox{
     display:flex;
     justify-content: center;
     
-  }
+}
+
+.defaultsetting{
+background-color: white;
+border:none
+}
+.defaultsetting:hover{
+    background-color: white;
+    color:#8f3b15 ;
+    border:none;
+    text-shadow: none;
+}
+
+

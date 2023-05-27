@@ -12,4 +12,10 @@
 }
 .NameContent >*{
     flex-grow: 1;
+    min-width: 200px;
+}
+.flexbox{
+    padding-bottom: 0;
+    line-height: 0 !important;
+    margin-top: 0.5rem;
 }

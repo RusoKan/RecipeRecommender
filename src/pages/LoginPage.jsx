@@ -32,12 +32,12 @@ function LoginPage(props) {
             withCredentials: true
         })
             .then((response) => {
-                console.log(response.data)
-                setLoggedIn(response.data)
+                console.log(response.data.authentication)
+                setLoggedIn(response.data.authentication)
                 setIsLoading(false)
-                if (response.data) {
-
-                    navigate('/UserPage');
+                if (response.data.authentication) {
+                    console.log(response.data.account.id)
+                    navigate(`/${response.data.account.id}`, );
                 }
 
             })
