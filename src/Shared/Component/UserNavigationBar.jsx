@@ -3,12 +3,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./MainNavigation.css"
-import { useState } from 'react';
+import { useState  } from 'react';
 import Button from "../FormElement/Button"
 import { Dropdown } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
+import Profile from '../../Users/Profile';
+import axios from 'axios';
+
 import "./UserNavigationBar.css"
+
+import { Navigate, useNavigate } from 'react-router-dom';
 function UserNavigationBar(props) {
+    const navigate=useNavigate()
     const [showDropdown, setShowDropdown] = useState(false);
     const [isMouseOver, setisMouseOver] = useState(
         {
@@ -18,9 +24,12 @@ function UserNavigationBar(props) {
             About: false
         }
     )
-
-    const { login = true, signup = true } = props;
-
+  
+    
+   
+    
+    const { profile = true } = props;
+    
 
     function onMouseOverHandler(event) {
 
@@ -35,7 +44,18 @@ function UserNavigationBar(props) {
             return { ...prev, [event.target.name]: false }
         })
     }
-
+    function logoutHandleClick(event){
+        axios(
+            {
+                method: "post",
+                url: "/api/logout"
+            }
+        ).then((response) => {
+            console.log(response.data)
+            if (!response.data)
+                navigate("/login")
+        })
+    }
 
     return (
         <>
@@ -113,12 +133,16 @@ function UserNavigationBar(props) {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu >
-                                    <Dropdown.Item className='flexcentered' href="#/action-1">Manage Your Profile</Dropdown.Item>
+                                    {profile &&<Dropdown.Item className='flexcentered' href={`/${props.id}/profile`}>
+                                   
+                                    Manage your profile
+
+                                    </Dropdown.Item>}
                                     <Dropdown.Item className='flexcentered' href="#/action-2">My Recipes</Dropdown.Item>
 
-                                    <Dropdown.Item  className='flexcentered' href="#/action-3">
+                                    <Dropdown.Item  className='flexcentered'>
                                     
-                                    <Button onClick={props.handleclick} style="primary">Log Out</Button>
+                                    <Button onClick={logoutHandleClick} style="primary">Log Out</Button>
                                     
                                     </Dropdown.Item>
                                 </Dropdown.Menu>

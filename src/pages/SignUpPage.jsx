@@ -7,17 +7,23 @@ import "./SignUpPage.css"
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
+import { useNavigate } from "react-router-dom";
+import CreateModal from "../Shared/Component/Modal";
 
 
 
 
 function SignUpPage(props) {
     const [Accountexist, setAccountexist] = useState(false)
-
+    const [CreatingAccountModal,setCreatingAccountModal]=useState(false)
+        const navigate=useNavigate();
 
 
     const inputRef = useRef({});
-
+    function onHide() {
+        navigate("/login")
+        
+    }
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -28,11 +34,16 @@ function SignUpPage(props) {
             password: inputRef.current.password.value
 
         }
-        axios.post('api/signup', data)
+        axios.post('/api/signup', data)
             .then((response) => {
                 // Handle the response from the backend
                 setAccountexist(response.data)
-                
+                console.log(response.data)
+                if(!response.data)
+                {
+                    setCreatingAccountModal(true)
+                    
+                }
             })
 
             .catch((error) => {
@@ -92,7 +103,13 @@ function SignUpPage(props) {
             </Form>
 
         </Card>
+                            <CreateModal show={CreatingAccountModal}
+                            heading="Your account has been created succesfully!"
+                            text=" Head on to your new account to start creating your own recipes!"
+                            onHide={onHide}
+                            >
 
+                            </CreateModal>
     </>
 }
 

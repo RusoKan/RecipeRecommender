@@ -1,20 +1,29 @@
 import axios from "axios"
 import Button from "../Shared/FormElement/Button"
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, createContext,  } from "react";
+import { useLocation, useNavigate ,useParams } from "react-router-dom";
 import UserNavigationBar from "../Shared/Component/UserNavigationBar";
-import {useLocation} from 'react-router-dom';
+
+
+export const UserContext = createContext();
 
 
 
 function UserPage(props) {
+    const parameter  = useParams();
+   
+    // const { pickIndex } = state || {};
+// console.log(pickIndex)
+    console.log("MY ID",);
     const [CurrentAccountData,setCurrentAccountData]=useState(null)
     const [dataFetched, setDataFetched] = useState(false);
     // const location = useLocation();
     // const[isLoading,setIsLoading]=useState(false)
     useEffect(()=>{
+        console.log("useEffect")
         axios.get("/api/dashboard")
         .then(response=>{
+            console.log("CurrentApiData",response.data)
             setCurrentAccountData(response.data)
             setDataFetched(true)
         })
@@ -24,26 +33,18 @@ function UserPage(props) {
 // }
     const navigate = useNavigate();
 
-function handleclick(event){
-    axios(
-        {
-            method: "post",
-            url: "/api/logout"
-        }
-    ).then((response) => {
-        console.log(response.data)
-        if (!response.data)
-            navigate("/login")
-    })
-}
+
 if (!dataFetched ) {
     return <>Still loading...</>;
   }
-    
+  console.log("CurrentAccountData:", CurrentAccountData);
     return <div>
-    <UserNavigationBar handleclick={handleclick}/>
+
     
-        <h1>Hello {CurrentAccountData.first_name} </h1>
+    <UserNavigationBar id={parameter.user} />
+    
+    
+    <h1>Hello {CurrentAccountData.first_name} </h1>
     
         
         

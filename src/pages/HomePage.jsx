@@ -8,14 +8,18 @@ import axios from "axios"
 function HomePage(props) {
   const [LoggedIn,setLoggedIn]=useState(false)
   const [animate, setAnimate] = useState(false);
-
-  axios.get('/api/dashboard',
+useEffect(()=>{
+  axios.get('/api/authenticationCheck',
 
   ).then(response=>{
 
     setLoggedIn(response.data)
   }
   )
+
+
+},[])
+  
   useEffect(() => {
     const handleLoad = () => {
       
