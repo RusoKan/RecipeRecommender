@@ -1,0 +1,11 @@
+.searchBarLine{
+    list-style-type: none;
+    
+  }
+  .searchBarContainer{
+    padding-top: 0.3rem;
+    border: 2px solid grey;
+  }
+  .searchBarLine:hover{
+    border: 2px solid greenyellow;
+  }
