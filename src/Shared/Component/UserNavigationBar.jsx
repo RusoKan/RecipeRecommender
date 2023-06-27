@@ -9,10 +9,11 @@ import { Dropdown } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Profile from '../../Users/Profile';
 import axios from 'axios';
-
+import Recipes from '../../Users/Recipes';
+import MyRecipes from '../../Users/MyRecipes';
 import "./UserNavigationBar.css"
 
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 function UserNavigationBar(props) {
     const navigate=useNavigate()
     const [showDropdown, setShowDropdown] = useState(false);
@@ -124,6 +125,14 @@ function UserNavigationBar(props) {
                                 </Dropdown.Menu>
                             </Dropdown>
 
+                            
+                            <Nav.Link 
+                            className="mx-4 option-style defaultsetting"
+                            href="recipes"
+                            >
+                            Recipes
+                            </Nav.Link>
+
 
 
 
@@ -138,7 +147,7 @@ function UserNavigationBar(props) {
                                     Manage your profile
 
                                     </Dropdown.Item>}
-                                    <Dropdown.Item className='flexcentered' href="#/action-2">My Recipes</Dropdown.Item>
+                                    <Dropdown.Item className='flexcentered' href="/my-recipes">My Recipes</Dropdown.Item>
 
                                     <Dropdown.Item  className='flexcentered'>
                                     
@@ -147,6 +156,7 @@ function UserNavigationBar(props) {
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
