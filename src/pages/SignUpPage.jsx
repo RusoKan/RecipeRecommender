@@ -9,7 +9,7 @@ import { useRef, useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import { useNavigate } from "react-router-dom";
 import CreateModal from "../Shared/Component/Modal";
-
+import { GoogleLoginButton } from "react-social-login-buttons";
 
 
 
@@ -24,6 +24,13 @@ function SignUpPage(props) {
         navigate("/login")
         
     }
+     function handleAuth() {
+        // axios.get("/api/auth/google")
+        window.open("/api/auth/google","_self")
+        
+        
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -102,6 +109,10 @@ function SignUpPage(props) {
 
             </Form>
 
+        </Card>
+        <h2 style={{textAlign:"center"}}>OR</h2>
+        <Card>
+        <GoogleLoginButton onClick={handleAuth}><span>Sign Up With Google </span></GoogleLoginButton>
         </Card>
                             <CreateModal show={CreatingAccountModal}
                             heading="Your account has been created succesfully!"

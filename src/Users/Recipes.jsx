@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Button from "../Shared/FormElement/Button"
 import Modal from 'react-bootstrap/Modal';
 import "./Recipes.css"
+import RecipeContainer from "../Shared/Component/RecipeContainer"
 
 
 function Recipes() {
@@ -24,9 +25,9 @@ const handleSearch=(value)=>{
     .then((response)=>
     {
         SetRecipeFound(true)
-    console.log(response.data)
+    
      const meal=response.data.meals[0]
-     console.log(meal)
+     
      const Number_of_ingredients=20
      let ingredients=[]
      console.log(meal[`strIngredient18`])
@@ -85,7 +86,18 @@ const handleSearch=(value)=>{
         <UserNavigationBar/>
         <SearchBar Search={handleSearch}/>
         {RecipeFound&&<Card>
-        <Container fluid>
+            <RecipeContainer 
+            mealImg={recipeData.mealImg}
+            mealName={recipeData.mealName}
+            mealtag={recipeData.mealtag}
+            mealCategory={recipeData.mealCat}
+            handleAddRecipe={handleAddRecipe}
+            SetAddRecipeButton={true}
+            mealLink={recipeData.mealLink}
+            mealIngredients={recipeData.mealIngredients}
+            mealInstruction={recipeData.mealInstruction}
+            />
+        {/* <Container fluid>
       <Row className="RecipeRow">
         <Col md={4} className="RecipeImageContainer">
         <img className="RecipeImage " src={recipeData.mealImg} alt="Meal-Img" />
@@ -115,7 +127,7 @@ const handleSearch=(value)=>{
         </Col>
         
       </Row>
-    </Container>
+    </Container> */}
 
         </Card>}
         <Modal

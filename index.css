@@ -28,4 +28,12 @@ body{
 }
 /* #ffd54f Mushroom body */ 
 /* #a67c52 Mushroom head */
+@media (max-width: 412px) {
+  .ImageResponsiveness{
+    display: none;
+  }
+  .title{
+    
+  }
 
+}

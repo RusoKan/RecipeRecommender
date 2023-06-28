@@ -1,0 +1,66 @@
+.SearchRecipeContainer{
+    display: grid;
+    grid-template-columns: 1fr 2fr ;
+    grid-template-rows: auto;
+    
+    
+}
+.RecipeRow
+{
+    
+    margin-bottom: 20px;
+}
+.RecipeInfoContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    padding-top:2.8rem ;
+}
+
+
+.RecipeImageContainer{
+    justify-content: center;
+    display: flex;
+    padding-left: 3rem;
+}
+
+.RecipeImage{
+    width:20vw;
+    border-radius: 20px;
+    
+}
+.RecipeTitle{
+     font-weight: 700;
+     font-size: 3.5vw;
+     color:#8f3b15 ;
+     
+     
+}
+@media (max-width:670px){
+    .RecipeImage{
+        width:35vw;
+        border-radius: 20px;
+        
+    }
+}
+.RecipeTag{
+    color:#8f3b15 ;
+    font-weight: 500;
+    font-size: medium;
+    
+}
+
+
+.RecipeStrucutre
+{
+    grid-row: 6;
+    justify-self: center;
+    color:#8f3b15 ;
+    font-weight: 500;
+}
+.seperator{
+    margin: 2rem auto 2rem auto;
+    
+    
+}

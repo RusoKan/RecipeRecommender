@@ -10,6 +10,8 @@ import RequireAuth from './auth/RequireAuth';
 import axios from 'axios';
 import PageNotFound from './pages/PageNotFound';
 import Profile from './Users/Profile';
+import Recipes from './Users/Recipes';
+import MyRecipes from './Users/MyRecipes';
 function App() {
   
  
@@ -27,6 +29,8 @@ function App() {
             <Route  element={<RequireAuth />}>
             <Route path=":user" element={<UserPage />} />
             <Route path=":user/profile" element={<Profile/>} />
+            <Route path="recipes" element={<Recipes/>}/>
+            <Route path="my-recipes" element={<MyRecipes/>}/>
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>

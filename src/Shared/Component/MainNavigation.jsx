@@ -53,7 +53,7 @@ function MainNavigation(props) {
     return (
         <Navbar expand="lg" className='NavbarAttribute'>
             <Container>
-                <span><img src="/images/MainLogo.png" alt="" /></span>
+                <span><img className='ImageResponsiveness' src="/images/MainLogo.png" alt="" /></span>
                 <Navbar.Brand className='title' href="/">
 
                     Recipe Court

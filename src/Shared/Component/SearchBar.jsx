@@ -6,7 +6,7 @@ import { useState } from 'react';
 import axios from "axios"
 import "./SearchBar.css"
 var Meallist=[] 
-function SearchBar(params) {
+function SearchBar(props) {
  const[MealList,setMealList]=useState([])
   const[currentSearch,setCurrentSearch]=useState("")
   const[searchOptions,setSearchOptions]=useState(false)
@@ -15,7 +15,10 @@ function SearchBar(params) {
         setCurrentSearch(event.target.innerHTML)
         setSearchOptions(false)
     }
-
+    function SendSearch(event) {
+        event.preventDefault()
+        props.Search(currentSearch)
+    }
     function handleChange(event) {
         console.log("letter",event.target.value)
         setCurrentSearch(event.target.value)
@@ -55,9 +58,9 @@ function SearchBar(params) {
         }
         
     }
-
+    
     return  <Card>
-       <Form>
+       <Form onSubmit={SendSearch}>
            <InputGroup size="lg">
                 
                 <Form.Control
@@ -67,7 +70,7 @@ function SearchBar(params) {
                   value={currentSearch}
                   onChange={handleChange}
                 />
-                <Button style="primary">Search</Button>
+                <Button type="submit"  style="primary">Search</Button>
               </InputGroup>
        </Form>
        <div className={`${searchOptions &&'searchBarContainer'}`}>

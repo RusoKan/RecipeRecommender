@@ -1,0 +1,42 @@
+.RecipeImageContainer{
+    justify-content: center;
+    display: flex;
+    row-gap: 5vh;
+}
+.MyRecipeTitle{
+    font-size: 20px;
+    font-weight: 300;
+     color:#8f3b15 ;
+     
+}
+
+.RecentlyAddedStyle{
+   font-style: italic; 
+   font-weight: 600;
+   color:#8f3b15 ;
+   margin-left: 4%;
+   margin-top: 5%;
+   margin-bottom: 3%;
+}
+
+
+@media (max-width: 888px) {
+    .RecipeTitle{
+        font-size: 3vh;
+        font-weight: 300;
+         color:#8f3b15 ;
+    }
+  }
+  @media (max-width:670px){
+    .MyCardBodyResponsiveness{
+        background-color: white;
+        margin-top: -25vw;
+        
+    }
+    
+    
+  }
+
+  .ZoomEffect:hover{
+    transform: scale(1.1);
+  }
