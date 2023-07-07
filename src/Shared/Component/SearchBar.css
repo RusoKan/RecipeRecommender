@@ -4,8 +4,34 @@
   }
   .searchBarContainer{
     padding-top: 0.3rem;
-    border: 2px solid grey;
+  
+    border: 1px solid grey;
   }
   .searchBarLine:hover{
     border: 2px solid greenyellow;
+    transition : 800ms;
+    cursor: pointer;
+
+transform : translateY(-0px);
+background-color: #f6ffde;
+color: #8f3b15;
+border: solid 2px #8f3b15;
+  }
+  .RedButton{
+    font-family: "Montserrat";
+font-weight: 500;
+font-size: 14px;
+padding: 10px 30px;
+display: flex;
+flex-direction: row;
+align-items: center;
+    border-radius: 50px;
+  }
+  .RedButton:hover{
+    transition : 1000ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    background-color: white;
+    color: red;
+    border: solid 2px red;
   }

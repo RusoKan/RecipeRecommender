@@ -11,13 +11,14 @@ function SearchBar(props) {
   const[currentSearch,setCurrentSearch]=useState("")
   const[searchOptions,setSearchOptions]=useState(false)
     function handleClickSearch(event) {
-        
         setCurrentSearch(event.target.innerHTML)
         setSearchOptions(false)
     }
     function SendSearch(event) {
         event.preventDefault()
+        setSearchOptions(false)
         props.Search(currentSearch)
+        setCurrentSearch("")
     }
     function handleChange(event) {
         console.log("letter",event.target.value)
@@ -55,6 +56,7 @@ function SearchBar(props) {
         }
         else{
             setMealList([])
+            setSearchOptions(false)
         }
         
     }

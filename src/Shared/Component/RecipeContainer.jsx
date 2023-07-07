@@ -2,8 +2,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from '../FormElement/Button';
-
+import Buttons from 'react-bootstrap/Button';
+import Rating from './RatingRecipe';
 function RecipeContainer(props) {
+    // const {SetAddRecipeButton=false,SetAddReviewButton=false}=props
    return <Container fluid>
       <Row className="RecipeRow">
         <Col md={5} className="RecipeImageContainer">
@@ -15,9 +17,9 @@ function RecipeContainer(props) {
         <h5>{props.mealCategory}</h5>
         
         {props.SetAddRecipeButton&&<Button onClick={props.handleAddRecipe} style="primary">Add to Your Recipe!</Button>}
-        
         <a target="_blank" href={props.mealLink}>Learn to make it through watching!</a>
-       
+        
+        {props.SetAddReviewButton&&<Button onClick={props.handleReview}style="primary">Leave us a review</Button>}
         </Col>
       </Row>
       

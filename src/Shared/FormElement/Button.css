@@ -16,7 +16,7 @@ font-family: "Montserrat";
 font-weight: 500;
 font-size: 14px;
 background-color: #a67c52;
-color: #f1da8c;
+color: white;
 padding: 10px 30px;
 border: solid #a67c52 2px;
 box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
@@ -34,7 +34,7 @@ cursor: pointer;
 transition : 1000ms;
 padding: 10px 50px;
 transform : translateY(-0px);
-background-color: #f6ffde;
+background-color: white;
 color: #8f3b15;
 border: solid 2px #8f3b15;
 }

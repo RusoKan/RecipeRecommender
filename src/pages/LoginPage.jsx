@@ -9,7 +9,7 @@ import { useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
-
+import { GoogleLoginButton } from "react-social-login-buttons";
 
 function LoginPage(props) {
 
@@ -18,6 +18,12 @@ function LoginPage(props) {
     const [LoggedIn, setLoggedIn] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate();
+    function handleAuth() {
+        // axios.get("/api/auth/google")
+        window.open("/api/auth/google","_self")
+        
+        
+    }
     function handleSubmit(event) {
 
         event.preventDefault()
@@ -75,6 +81,11 @@ function LoginPage(props) {
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>}
             </Card>
+            <h2 style={{textAlign:"center"}}>OR</h2>
+            <Card>
+        <GoogleLoginButton onClick={handleAuth}><span>Log in With Google </span></GoogleLoginButton>
+        </Card>
+
         </>
     )
 
