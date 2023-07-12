@@ -148,7 +148,7 @@ function UserNavigationBar(props) {
 
                                     </Dropdown.Item>}
                                     <Dropdown.Item className='flexcentered' href="/my-recipes">My Recipes</Dropdown.Item>
-
+                                    <Dropdown.Item className='flexcentered' href="/shoppinglist">My Shopping List</Dropdown.Item>
                                     <Dropdown.Item  className='flexcentered'>
                                     
                                     <Button onClick={logoutHandleClick} style="primary">Log Out</Button>

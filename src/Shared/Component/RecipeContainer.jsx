@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Button from '../FormElement/Button';
 import Buttons from 'react-bootstrap/Button';
 import Rating from './RatingRecipe';
+import "./RecipeContainer.css"
 function RecipeContainer(props) {
     // const {SetAddRecipeButton=false,SetAddReviewButton=false}=props
    return <Container fluid>
@@ -30,8 +31,12 @@ function RecipeContainer(props) {
         {props.mealIngredients?.map((value,index)=>{
             return <ul key={index}><li>{value}</li></ul>
         })}
+        <div className="IngredientButton"><Button onClick={props.AddAllIngredientsToShoppingList} style="primary">Add all Ingredients to Shopping List</Button></div>
+        <hr className='toggleLine'/>
         </Col>
+        
         <Col>
+        <br />
         <h3 className="RecipeStrucutre">Instruction</h3>
         <p>{props.mealInstruction}</p>
         </Col>

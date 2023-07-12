@@ -6,7 +6,7 @@ import Buttons from 'react-bootstrap/Button';
 import { useEffect, useState, useRef } from "react";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
-
+import CreateModal from "../Shared/Component/Modal";
 import RecipeContainer from "../Shared/Component/RecipeContainer";
 import Placeholder from 'react-bootstrap/Placeholder';
 import "./MyRecipe.css"
@@ -28,6 +28,7 @@ function MyRecipes(props) {
     })
     const inputRef = useRef({});
     const [showReviewModal, setshowReviewModal] = useState(false)
+    const [showIngredientModal, setshowIngredientModal] = useState(false)
     useEffect(() => {
         axios.get("/api/MyrecipefromID")
             .then(response => {
@@ -116,6 +117,20 @@ function MyRecipes(props) {
         axios.put("/api/ReviewForRecipe",{data})
         .then((response)=>{
 
+        })
+    }
+    function handleAddAllIngredientsToShoppingList() {
+        const  data={
+            RecipeId:selectedMealId
+        }
+        
+        axios.put("/api/AddingIngredientsToShoppingList",data )
+        .then(response=>{
+            console.log(response.data)
+            setshowIngredientModal(true)
+        })
+        .catch(response=>{
+            
         })
     }
     //  if(Datafetched.dataFromLatestAddedRecipe===false|| Datafetched.dataFromMyRecipe===false)
@@ -238,6 +253,7 @@ function MyRecipes(props) {
                     handleReview={() => setshowReviewModal(true)}
                     mealIngredients={recipeData.mealIngredients}
                     mealInstruction={recipeData.mealInstruction}
+                    AddAllIngredientsToShoppingList={handleAddAllIngredientsToShoppingList}
                 />
 
             </Modal.Body>
@@ -269,8 +285,14 @@ function MyRecipes(props) {
                 <Button style="primary" onClick={() => setVerificationRemove(false)}>No</Button>
             </Modal.Footer>
         </Modal>
-
-
+        
+        <CreateModal
+            show={showIngredientModal}
+            onHide={()=>setshowIngredientModal(false)}
+            title= {` ${recipeData.mealName}`}
+            body="The ingredients was succesfully Added to the Shopping List"
+        />
+       
 
 
 

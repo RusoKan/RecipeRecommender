@@ -12,6 +12,7 @@ import PageNotFound from './pages/PageNotFound';
 import Profile from './Users/Profile';
 import Recipes from './Users/Recipes';
 import MyRecipes from './Users/MyRecipes';
+import ShoppingList from './Users/ShoppingList';
 function App() {
   
  
@@ -26,11 +27,12 @@ function App() {
           {/* <Route path="userpage" element={<UserPage/>}/> */}
           {/* <Route path=":user" element={<UserPage />} /> */}
           {/* <Route path=":user/Profile" element={<UserPage />} /> */}
-            <Route  element={<RequireAuth />}>
+          <Route  element={<RequireAuth />}>
             <Route path=":user" element={<UserPage />} />
             <Route path=":user/profile" element={<Profile/>} />
             <Route path="recipes" element={<Recipes/>}/>
             <Route path="my-recipes" element={<MyRecipes/>}/>
+            <Route path="shoppingList" element={<ShoppingList/>}></Route>
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
