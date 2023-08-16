@@ -4,7 +4,19 @@
 padding: auto 20px auto 20px;
 text-align: center;
 }
-
+.option-style
+{
+    font-family: 'Dancing Script', cursive;
+    color:#8EAC50 ;
+    font-size: 20px;
+    font-weight: 700;
+}
+.NavBarTitle{
+    font-family: 'Courgette', cursive;
+    font-size: 30px;
+    font-weight: 700;
+    color:#8EAC50 ;
+  }
 img{
 
     margin-right: 35px;
@@ -18,7 +30,8 @@ img{
     text-decoration:underline;
 }
 .menu  {
-    transform: scale(1.2);
+    
+    transform: scale(1.7);
     text-shadow: none;
   }
 .flexedbox{

@@ -2,6 +2,7 @@ import UserNavigationBar from "../Shared/Component/UserNavigationBar"
 import { Card, Row, Col, Container, Modal, Form } from 'react-bootstrap';
 import ContainerCard from "../Shared/Wrapper/Card";
 import Button from "../Shared/FormElement/Button";
+import "../Shared/FormElement/Button.css"
 import Buttons from 'react-bootstrap/Button';
 import { useEffect, useState, useRef } from "react";
 import ReactStars from "react-rating-stars-component";
@@ -259,7 +260,7 @@ function MyRecipes(props) {
             </Modal.Body>
 
             <Modal.Footer>
-                `<Buttons onClick={() => { setVerificationRemove(true) }} className="RedButton" variant="danger">Remove</Buttons>{' '}
+                `<Buttons onClick={() => { setVerificationRemove(true) }} className="FormButton red" variant="danger">Remove</Buttons>{' '}
                 <Button style="primary" onClick={() => setShowRecipeModal(false)}>Close</Button>
             </Modal.Footer>
         </Modal>
@@ -281,7 +282,7 @@ function MyRecipes(props) {
 
             </Modal.Body>
             <Modal.Footer>
-                <Buttons className="RedButton" variant="danger" onClick={handleDeleteRecipe}>Yes</Buttons>
+                <Buttons className="FormButton red" variant="danger" onClick={handleDeleteRecipe}>Yes</Buttons>
                 <Button style="primary" onClick={() => setVerificationRemove(false)}>No</Button>
             </Modal.Footer>
         </Modal>

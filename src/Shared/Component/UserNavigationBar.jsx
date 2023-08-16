@@ -62,7 +62,7 @@ function UserNavigationBar(props) {
         <>
             <Navbar expand="lg" className='NavbarAttribute'>
                 <Container>
-                    <span><img className='ImageResponsiveness' src="/images/MainLogo.png" alt="" /></span>
+                    <span><img className='ImageResponsiveness resizeLogo' src="/images/MainLogo2.png" alt="" /></span>
                     <Navbar.Brand className='title' href="/">
 
                         Recipe Court
@@ -142,11 +142,11 @@ function UserNavigationBar(props) {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu >
-                                    {profile &&<Dropdown.Item className='flexcentered' href={`/${props.id}/profile`}>
+                                     <Dropdown.Item className='flexcentered' href={`/profile`}>
                                    
                                     Manage your profile
 
-                                    </Dropdown.Item>}
+                                    </Dropdown.Item>
                                     <Dropdown.Item className='flexcentered' href="/my-recipes">My Recipes</Dropdown.Item>
                                     <Dropdown.Item className='flexcentered' href="/shoppinglist">My Shopping List</Dropdown.Item>
                                     <Dropdown.Item  className='flexcentered'>

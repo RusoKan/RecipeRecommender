@@ -5,19 +5,29 @@
         
  
 } */
+.bodyImage{
+ background-image: url("/images/Vegetable_bg.jpg");
+ background-size: 100% 130%;
+ background-repeat: no-repeat ;
+ border-radius: 5px;
+}
 .content-flex-center{
     display: flex;
     justify-content: center;
 }
 .main-title{
+  font-family: 'Dancing Script', cursive;
+  color: #8EAC50;
+  /*  */
+  /* color: #617A55; */
     font-weight: 900 ;
-    font-size: 5vw;
-
+    font-size: 10vw;
+ 
 }
 .collapse-img {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 5s ease-in-out;
   }
   
   .collapse-img.show {

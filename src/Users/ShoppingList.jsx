@@ -4,11 +4,13 @@ import Card from "../Shared/Wrapper/Card"
 import axios from "axios"
 import Form from 'react-bootstrap/Form';
 import "./ShoppingList.css"
-import Button from "../Shared/FormElement/Button";
+import { Button } from "react-bootstrap";
 function ShoppingList(props) {
     const [ListofIngredients,setListOfIngredients]=useState([])
     const [itemsTobeRemoved,setitemstoBeRemoved]=useState([])
     const [HideButton,setHideButton]=useState(true)
+    const [AllItemSelected,setAllItemSelected]=useState(false)
+    const [selectedItem,setSelectedItem]=useState({})
     useEffect(()=>{
         axios.get("/api/getShoppingList")
         .then(response=>{
@@ -23,11 +25,16 @@ function ShoppingList(props) {
             console.log(err.response.data.msg)
         })
     },[])
+    function handleSelectAll() {
+        setAllItemSelected(true)
+        setitemstoBeRemoved(ListofIngredients)
+    }
     function handleCheckList(event) {
         const itemChecked=event.target.checked;
         const ingredientName=event.target.name
+
         if(itemChecked)
-        setitemstoBeRemoved((prev)=>[...prev,ingredientName])
+        {setitemstoBeRemoved((prev)=>[...prev,ingredientName])}
         else if(!itemChecked)
         {
             setitemstoBeRemoved(itemsTobeRemoved.filter(ingredient=>ingredient!==ingredientName))
@@ -50,12 +57,15 @@ function ShoppingList(props) {
     <Card>
     
     <div  className="IngredientContainer">
-   {!HideButton&&<div> <Button onClick={DeleteSelectedItem} style="primary">Remove selected Ingredients from list</Button></div>}
+   {!HideButton&&<div className="ButtonCenteringContainer"> 
+   <Button className="FormButton white" variant="dark" onClick={handleSelectAll} >{"Select All"}</Button>
+   <Button className="FormButton red" variant="danger" onClick={DeleteSelectedItem} >Remove selected Ingredients from list</Button>
+   </div>}
    {HideButton&&<h3 className="NoIngredientstext">Go to your Recipe and add some ingredient for your next Grocery Shopping!</h3>}
     <br />
         {ListofIngredients.map((value,index)=>{
-        return <label key={index} className="form-control " >
-    <input type="checkbox"  onChange={handleCheckList} name={`${value}`} />
+        return <label key={index}  className="form-control " >
+    <input type="checkbox" checked={AllItemSelected?true:null} onChange={handleCheckList} name={`${value}`} />
     {`${value}`}
   </label>
               

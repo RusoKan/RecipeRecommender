@@ -28,8 +28,9 @@ function App() {
           {/* <Route path=":user" element={<UserPage />} /> */}
           {/* <Route path=":user/Profile" element={<UserPage />} /> */}
           <Route  element={<RequireAuth />}>
-            <Route path=":user" element={<UserPage />} />
-            <Route path=":user/profile" element={<Profile/>} />
+            {/* <Route path=":user" element={<UserPage />} /> */}
+            <Route path="dashboard" element={<UserPage />} />
+            <Route path="profile" element={<Profile/>} />
             <Route path="recipes" element={<Recipes/>}/>
             <Route path="my-recipes" element={<MyRecipes/>}/>
             <Route path="shoppingList" element={<ShoppingList/>}></Route>

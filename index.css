@@ -4,18 +4,23 @@ body{
   font-family: 'Montserrat', sans-serif;
   
 }
+/*#FAF8F1  */
 .title{
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Courgette', cursive;
   font-weight: 900;
   font-size:xx-large;
-  color:#8f3b15 ;
+  color:#8EAC50 ;
   ;
 }
-.option-style
+.logoColor{
+  font-family: 'Courgette', cursive;
+ color: #f79417 !important
+}
+/* .option-style
 {
     color:#8f3b15 ;
     font-weight: 700;
-}
+} */
 
 .flexcentered{
   display: flex;

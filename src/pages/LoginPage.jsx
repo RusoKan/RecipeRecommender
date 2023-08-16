@@ -43,7 +43,7 @@ function LoginPage(props) {
                 setIsLoading(false)
                 if (response.data.authentication) {
                     console.log(response.data.account.id)
-                    navigate(`/${response.data.account.id}`, );
+                    navigate(`/dashboard`, );
                 }
 
             })
@@ -74,8 +74,8 @@ function LoginPage(props) {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" ref={(password) => { LoginInputs.current.loginPassword = password }} placeholder="Password" />
                     </Form.Group>
-
-                    <Button style="primary" type="submit">Log in</Button>
+                    
+                  <div className='flexedbox'>  <Button style="primary" type="submit">Log in</Button></div>
                 </Form>
                 {isLoading && <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>

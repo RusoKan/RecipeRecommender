@@ -1,0 +1,18 @@
+.HomePageTitle{
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+    font-weight: 700;
+    color:#37b100 ;
+    /* color:#f79417; */
+    opacity: 75%;
+    
+  }
+  .TitleCase{
+    text-transform: lowercase;  
+    display: inline-block; 
+  }
+
+  .TitleCase::first-letter{
+    text-transform: uppercase;
+    
+  }

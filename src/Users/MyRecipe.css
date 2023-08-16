@@ -7,6 +7,7 @@
     font-size: 20px;
     font-weight: 300;
      color:#8f3b15 ;
+     color: #37b100;
      
 }
 
@@ -24,7 +25,7 @@
     .RecipeTitle{
         font-size: 3vh;
         font-weight: 300;
-         color:#8f3b15 ;
+         
     }
   }
   @media (max-width:670px){
@@ -37,6 +38,13 @@
     
   }
 
+
+  .ZoomEffect{
+    transition: 1s;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
   .ZoomEffect:hover{
+    transition: 0.5s;
     transform: scale(1.1);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   }

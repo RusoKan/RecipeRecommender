@@ -48,16 +48,41 @@ function Profile(props) {
   
   async function handleSubmitting(event) {
     let diet={}
+    const ArrayofDietRestriction=[]
     event.preventDefault()
     // const selected_radio=inputRef.current.diet_restriction.checked?inputRef.current.diet_restriction.value:inputRef.current.no_diet_restriction.value
-    if(inputRef.current.diet_restriction.checked){
-      diet={
+     
+     console.log(inputRef.current)
+     console.log(inputRef.current.diet_restriction.checked)
+     diet={
       TypeOfdiet:inputRef.current.diet_restriction.value,
       glutenFree:inputRef.current.glutenFree.checked,
       dairyFree:inputRef.current.dairyFree.checked,
       Vegetarian:inputRef.current.Vegetarian.checked,
-      Vegan:inputRef.current.Vegan.checked,
+      Vegan:inputRef.current.Vegan.checked, 
       }
+    if(inputRef.current.diet_restriction.checked){
+
+      if (diet.glutenFree){
+        ArrayofDietRestriction.push(inputRef.current.glutenFree.name)
+        
+      }
+      if (diet.dairyFree){
+        ArrayofDietRestriction.push(inputRef.current.dairyFree.name)
+
+      }
+      if (diet.Vegetarian){
+        ArrayofDietRestriction.push(inputRef.current.Vegetarian.name)
+
+      }
+      if (diet.Vegan){
+        ArrayofDietRestriction.push(inputRef.current.Vegan.name)
+        
+      }
+      console.log(ArrayofDietRestriction)
+      diet.ArrayofDietRestriction=ArrayofDietRestriction
+      
+      
     }
     else{
        diet={
@@ -66,6 +91,7 @@ function Profile(props) {
         dairyFree:false ,
         Vegetarian:false ,
         Vegan:false,
+        ArrayofDietRestriction:ArrayofDietRestriction,
         }
     }
     axios
@@ -76,10 +102,13 @@ function Profile(props) {
         gender: inputRef.current.gender.value,
         country: inputRef.current.country.value,
         Diet:diet,
+        
+
       })
       .then((response) => {
         console.log("Inside", response);
-        navigate(`/${user.id}`, { state: { doc: response } });
+        navigate(`/dashboard`, { state: { doc: response } });
+        console.log(diet.ArrayofDietRestriction)
       })
       .catch(err => {
         console.log(err)
@@ -166,10 +195,10 @@ function handlingDateOfBirth(event) {
         <Form.Group className="mb-3" controlId="Diet">
           <Form.Label>Diet Restriction</Form.Label>
           <Form.Check onClick={handleClickFoodRestriction} defaultChecked={diet.glutenFree ||diet.dairyFree||diet.Vegetarian||diet.Vegan }  type="radio" aria-label="option 1" name="dietRestriction" label="Diet Restriction" value="Diet restriction" ref={(e1) => (inputRef.current.diet_restriction = e1)}  />
-          <Form.Check disabled={disableOption} defaultChecked={diet.glutenFree} className="mx-4" aria-label="option 1" ref={(e1) => (inputRef.current.glutenFree = e1)} name="Gluten Free" label="Gluten Free" />
-          <Form.Check disabled={disableOption} defaultChecked={diet.dairyFree} className="mx-4" aria-label="option 1" ref={(e1) => (inputRef.current.dairyFree= e1)} name="Dairy Free" label="Dairy Free" />
-          <Form.Check disabled={disableOption} defaultChecked={diet.Vegetarian} className="mx-4" aria-label="option 1" ref={(e1) => (inputRef.current.Vegetarian = e1)}label=" Vegetarian" />
-          <Form.Check disabled={disableOption} defaultChecked={diet.Vegan} className="mx-4" aria-label="option 1" ref={(e1) => (inputRef.current.Vegan = e1)} label=" Vegan" />
+          <Form.Check disabled={disableOption} defaultChecked={diet.glutenFree} className="mx-4" aria-label="option 1" ref={(e1) => (inputRef.current.glutenFree = e1)} name="Gluten-Free" label="Gluten Free" />
+          <Form.Check disabled={disableOption} defaultChecked={diet.dairyFree} className="mx-4" aria-label="option 1" ref={(e1) => (inputRef.current.dairyFree= e1)} name="Dairy-Free" label="Dairy Free" />
+          <Form.Check disabled={disableOption} defaultChecked={diet.Vegetarian} className="mx-4" aria-label="option 1" ref={(e1) => (inputRef.current.Vegetarian = e1)} name="Vegetarian" label="Vegetarian" />
+          <Form.Check disabled={disableOption} defaultChecked={diet.Vegan} className="mx-4" aria-label="option 1" ref={(e1) => (inputRef.current.Vegan = e1)} name="Vegan" label=" Vegan" />
           <Form.Check onClick={handleClickNoFoodRestriction} defaultChecked={!(diet.glutenFree ||diet.dairyFree||diet.Vegetarian||diet.Vegan)}  type="radio"  name="dietRestriction" value="No Diet restriction" ref={(e1) => (inputRef.current.no_diet_restriction = e1)}  aria-label="option 2" label=" No Diet Restriction" />
 
 

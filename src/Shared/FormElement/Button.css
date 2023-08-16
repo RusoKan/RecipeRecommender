@@ -12,13 +12,13 @@
 
 .primary{
 
-font-family: "Montserrat";
+font-family: "Courgette";
 font-weight: 500;
-font-size: 14px;
-background-color: #a67c52;
-color: white;
+font-size: 16px;
+background-color: #37b100;
+color:  white;
 padding: 10px 30px;
-border: solid #a67c52 2px;
+border: dotted #37b100 2px;
 box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
 border-radius: 50px;
 transition : 1000ms;
@@ -33,13 +33,42 @@ cursor: pointer;
 
 transition : 1000ms;
 padding: 10px 50px;
+/* padding: 10px 100px; */
 transform : translateY(-0px);
 background-color: white;
-color: #8f3b15;
-border: solid 2px #8f3b15;
+color: #f79417;
+border: solid 2px #f79417;
+/* border: none 2px #f79417; */
 }
 
 .flex-grow{
 
 flex-grow: 1;
+}
+.FormButton{
+    font-family: "Montserrat";
+font-weight: 500;
+font-size: 14px;
+padding: 10px 30px;
+display: flex;
+flex-direction: row;
+align-items: center;
+    border-radius: 50px;
+  }
+.FormButton:hover{
+    transition : 1000ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    
+  }
+
+.red:hover{
+    background-color: white;
+    color: red;
+    border: solid 2px red;
+}
+.white:hover{
+    background-color: white;
+    color: black;
+    border: solid 2px black;
 }

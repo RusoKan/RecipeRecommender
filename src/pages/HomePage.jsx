@@ -38,23 +38,23 @@ useEffect(()=>{
   return (
     <>
       <MainNavigation LoggedIN={LoggedIn}/>
-      <Container fluid="md">
-        <Row>
-          <Col className="content-flex-center">
-            <div className={`collapse-img ${animate ? 'show' : ''}`}>
-              <img
-                className={`Main-img ${animate ? 'fade-in' : ''}`}
-                src="https://static1.squarespace.com/static/53b839afe4b07ea978436183/53bbeeb2e4b095b6a428a13e/5fd2570b51740e23cce97919/1678505081247/traditional-food-around-the-world-Travlinmad.jpg?format=1500w"
-              />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h1 className="main-title title">MAKE YOUR RECIPE TODAY !</h1>
-          </Col>
-        </Row>
-      </Container>
+       
+      <div className="bodyImage">
+        <Container fluid="md" >
+          <Row>
+            <Col className="content-flex-center">
+
+              <h1 className="main-title">Welcome To Recipe Court !</h1>
+            </Col>
+            <Col>
+           
+            </Col>
+          </Row>
+          <Row>
+            
+          </Row>
+        </Container>
+      </div>
     </>
   );
 }

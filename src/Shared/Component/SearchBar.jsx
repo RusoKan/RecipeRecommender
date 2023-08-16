@@ -11,7 +11,8 @@ function SearchBar(props) {
   const[currentSearch,setCurrentSearch]=useState("")
   const[searchOptions,setSearchOptions]=useState(false)
     function handleClickSearch(event) {
-        setCurrentSearch(event.target.innerHTML)
+        console.log(event)
+        setCurrentSearch(event.target.innerText)
         setSearchOptions(false)
     }
     function SendSearch(event) {

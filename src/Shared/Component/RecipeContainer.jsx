@@ -18,6 +18,11 @@ function RecipeContainer(props) {
         <h5>{props.mealCategory}</h5>
         
         {props.SetAddRecipeButton&&<Button onClick={props.handleAddRecipe} style="primary">Add to Your Recipe!</Button>}
+       
+          
+         
+
+        
         <a target="_blank" href={props.mealLink}>Learn to make it through watching!</a>
         
         {props.SetAddReviewButton&&<Button onClick={props.handleReview}style="primary">Leave us a review</Button>}

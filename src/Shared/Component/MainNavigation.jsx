@@ -28,7 +28,7 @@ function MainNavigation(props) {
 
         })
         .then(response=>{
-            navigate(`/${response.data.id}`, {state:{name:response.data.first_name}})
+            navigate(`/dashboard`, {state:{name:response.data.first_name}})
         }
 
         )
@@ -53,8 +53,8 @@ function MainNavigation(props) {
     return (
         <Navbar expand="lg" className='NavbarAttribute'>
             <Container>
-                <span><img className='ImageResponsiveness' src="/images/MainLogo.png" alt="" /></span>
-                <Navbar.Brand className='title' href="/">
+                <span><img className='ImageResponsiveness resizeLogo' src="/images/MainLogo2.png" alt="" /></span>
+                <Navbar.Brand className='NavBarTitle' href="/">
 
                     Recipe Court
                 </Navbar.Brand>

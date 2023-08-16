@@ -26,14 +26,16 @@
 }
 
 .RecipeImage{
-    width:20vw;
+    width:28vw;
+    height: auto;
     border-radius: 20px;
     
 }
 .RecipeTitle{
+    font-family: 'Dancing Script', cursive;
      font-weight: 700;
-     font-size: 3.5vw;
-     color:#8f3b15 ;
+     font-size: 5vw;
+     color:#37b100 ;
      text-align: center;
      
      
@@ -55,9 +57,10 @@
 
 .RecipeStrucutre
 {
+    font-family: 'Courgette', cursive;
     grid-row: 6;
     justify-self: center;
-    color:#8f3b15 ;
+    color:#37b100 ;
     font-weight: 500;
 }
 .seperator{

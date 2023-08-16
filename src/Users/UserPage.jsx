@@ -3,7 +3,8 @@ import Button from "../Shared/FormElement/Button"
 import { useEffect, useState, createContext,  } from "react";
 import { useLocation, useNavigate ,useParams } from "react-router-dom";
 import UserNavigationBar from "../Shared/Component/UserNavigationBar";
-
+import "./UserPage.css"
+import SuggestionRecipe from "../Shared/Component/SuggestionRecipe";
 
 export const UserContext = createContext();
 
@@ -20,6 +21,7 @@ function UserPage(props) {
     // const location = useLocation();
     // const[isLoading,setIsLoading]=useState(false)
     useEffect(()=>{
+        
         console.log("useEffect")
         axios.get("/api/dashboard")
         .then(response=>{
@@ -27,6 +29,7 @@ function UserPage(props) {
             setCurrentAccountData(response.data)
             setDataFetched(true)
         })
+        
     },[])
     
     
@@ -44,7 +47,10 @@ if (!dataFetched ) {
     <UserNavigationBar id={parameter.user} />
     
     
-    <h1>Hello {CurrentAccountData.first_name} </h1>
+    <h1 className="HomePageTitle  " > Welcome <span className="TitleCase" >{CurrentAccountData.first_name}</span>  ! </h1>
+
+    <SuggestionRecipe/>
+
     
         
         
