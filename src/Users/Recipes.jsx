@@ -10,22 +10,39 @@ import Button from "../Shared/FormElement/Button"
 import Modal from 'react-bootstrap/Modal';
 import "./Recipes.css"
 import RecipeContainer from "../Shared/Component/RecipeContainer"
+import RecipeCard from "../Shared/Component/RecipeCard"
+import Loading from "../Shared/Component/Loading"
 
 
 function Recipes() {
   const [RecipeFound,SetRecipeFound]=useState(false)
+  const [modalForOneRecipe,setModalForOneRecipe]=useState(false)
+  const [multipleRecipesFound,SetmultipleRecipesFound]=useState(false)
     const[recipeData,setRecipeData]=useState({})
     const [lgShow, setLgShow] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
+    const [multipleRecipes,setMultipleRecipes]=useState([]);
+    const[showRecipeCards,SetShowRecipeCards]=useState([]);
+    const [dataFetched,setDataFetched]=useState(true)
 const handleSearch=(value)=>{
+  SetRecipeFound(false)
+  SetmultipleRecipesFound(false)
  const data={
     search:value
  }
+ setDataFetched(false)
     axios.post("/api/recipeFinderByName",data)
     .then((response)=>
     {
-        SetRecipeFound(true)
-    
+      setDataFetched(true)
+      if(response.data.meals.length>1){
+           setMultipleRecipes(response.data.meals)
+           SetmultipleRecipesFound(true)
+           console.log("HIGH NUMBER")
+      }else
+        {
+          SetRecipeFound(true)
+     console.log(response.data)
      const meal=response.data.meals[0]
      
      const Number_of_ingredients=20
@@ -51,12 +68,27 @@ const handleSearch=(value)=>{
             mealIngredients:ingredients,
             mealID:meal.idMeal,
         })
+        }
 
     })
     .catch(error=>{
     console.log("Uh oh! Recipe does not exist in our database.")
     })
-
+ 
+}
+function handleClickRecipe(meal){
+  setModalForOneRecipe(true)
+  console.log("M<EAL",meal)
+ setRecipeData({
+  mealName:meal.mealName,
+  mealCat:meal.mealCategory,
+  mealImg:meal.mealImg,
+  mealtag:meal.mealtag,
+  mealInstruction:meal.mealInstruction,
+  mealLink:meal.mealLink,
+  mealIngredients:meal.mealIngredients,
+  mealID:meal.mealID,
+})
 }
  function handleAddRecipe() {
     const data={
@@ -81,12 +113,18 @@ const handleSearch=(value)=>{
 
     // if(!dataFetched)
     // return <h1>Loading..</h1>
-
+if(!dataFetched)
+return <>
+        <UserNavigationBar/>
+        <SearchBar Search={handleSearch}/>
+      <Loading size="large marginTop"/>
+</>
     return <>
         <UserNavigationBar/>
         <SearchBar Search={handleSearch}/>
         {RecipeFound&&<Card>
             <RecipeContainer 
+            mealID={recipeData.mealID}
             mealImg={recipeData.mealImg}
             mealName={recipeData.mealName}
             mealtag={recipeData.mealtag}
@@ -97,6 +135,8 @@ const handleSearch=(value)=>{
             mealIngredients={recipeData.mealIngredients}
             mealInstruction={recipeData.mealInstruction}
             />
+
+          
         {/* <Container fluid>
       <Row className="RecipeRow">
         <Col md={4} className="RecipeImageContainer">
@@ -130,6 +170,22 @@ const handleSearch=(value)=>{
     </Container> */}
 
         </Card>}
+        <Container fluid  >
+        <Row className="RecipeImageContainer">
+        {multipleRecipesFound&& multipleRecipes.map((recipe,index)=>{
+            console.log(recipe)
+              return <Col key={recipe.idMeal}>
+              <RecipeCard
+                RecipeID={recipe.idMeal}
+                handleClickRecipe={handleClickRecipe}
+              />
+              </Col>
+            })
+          
+
+          }
+          </Row>
+          </Container>
         <Modal
         size="lg"
         show={lgShow}
@@ -142,6 +198,35 @@ const handleSearch=(value)=>{
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>{modalMessage}</Modal.Body>
+      </Modal>
+
+      <Modal
+        size="lg"
+        show={modalForOneRecipe}
+        fullscreen={true}
+        onHide={() => setModalForOneRecipe(false)}
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-lg">
+            Adding to your list of recipes
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        {console.log(recipeData)}
+          <RecipeContainer
+            mealID={recipeData.mealID}
+            mealImg={recipeData.mealImg}
+            mealName={recipeData.mealName}
+            mealtag={recipeData.mealtag}
+            mealCategory={recipeData.mealCat}
+            handleAddRecipe={handleAddRecipe}
+            SetAddRecipeButton={true}
+            mealLink={recipeData.mealLink}
+            mealIngredients={recipeData.mealIngredients}
+            mealInstruction={recipeData.mealInstruction}
+          />
+        </Modal.Body>
       </Modal>
     </>
 

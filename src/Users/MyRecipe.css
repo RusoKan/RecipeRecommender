@@ -1,20 +1,26 @@
 .RecipeImageContainer{
-    justify-content: center;
     display: flex;
+    
     row-gap: 5vh;
 }
 .MyRecipeTitle{
+  font-family: 'Dancing Script', cursive; 
     font-size: 20px;
     font-weight: 300;
-     color:#8f3b15 ;
      color: #37b100;
      
 }
+.RecipeColumnContainer{
+  align-content: flex-end;
+}
 
 .RecentlyAddedStyle{
-   font-style: italic; 
+  font-family: 'Dancing Script', cursive; 
+   
+   font-size: 50px; 
    font-weight: 600;
-   color:#8f3b15 ;
+   color:#f79417 ;
+   opacity: 70%;
    margin-left: 4%;
    margin-top: 5%;
    margin-bottom: 3%;
@@ -23,9 +29,14 @@
 
 @media (max-width: 888px) {
     .RecipeTitle{
-        font-size: 3vh;
+      font-size: 12vw;
         font-weight: 300;
          
+    }
+    .RecentlyAddedStyle{
+      font-size: 7.5vw;
+      padding-left: 10vw;
+      padding-bottom: 1.5rem;
     }
   }
   @media (max-width:670px){

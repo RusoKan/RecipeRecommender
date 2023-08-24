@@ -16,7 +16,7 @@
     min-width: 375px;
     padding: 2rem;
     transition: 1.5s;
-   /* border: 0.2rem solid #a67c52 ;
-  box-shadow: 3px 3px #c9c4c4; */
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+   /* border: 0.2rem solid #a67c52 ;*/
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  
 }

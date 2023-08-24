@@ -16,21 +16,24 @@ function RecipeCard(props) {
             console.log(response.data)
         })
      },[])
+    
+
     return<>
         {console.log("REC",recipe)}
-        <Card onClick={() => props.handleClickRecipe(recipe.id)} className="ZoomEffect" style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src={recipe.Image} />
+        <Card onClick={() => props.handleClickRecipe(recipe)} className="ZoomEffect" style={{ width: '18rem' }}>
+                                <Card.Img variant="top" src={recipe.mealImg} />
                                 <Card.Body className="MyCardBodyimageResponsiveness">
-                                    <Card.Title className="MyRecipeTitle logoColor">{recipe.mealName}</Card.Title>
+                                    <Card.Title className=" logoColor">{recipe.mealName}</Card.Title>
                                     <Card.Text>
-                                        {recipe.MealCategory}
+                                        {recipe.mealCategory}
                                         <br />
-                                        {recipe.Area}
+                                        {recipe.mealArea}
                                     </Card.Text>
                                     
-                                    <Button onClick={() => props.handleClickRecipe(recipe.id)} style="primary">Show me the Recipe!</Button>
+                                    <Button onClick={() => props.handleClickRecipe(recipe)} style="primary">Show me the Recipe!</Button>
                                 </Card.Body>
                             </Card>
+
 
     </>
 }

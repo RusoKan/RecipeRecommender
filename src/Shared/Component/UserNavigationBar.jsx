@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./MainNavigation.css"
-import { useState  } from 'react';
+import { useState } from 'react';
 import Button from "../FormElement/Button"
 import { Dropdown } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
@@ -12,11 +12,13 @@ import axios from 'axios';
 import Recipes from '../../Users/Recipes';
 import MyRecipes from '../../Users/MyRecipes';
 import "./UserNavigationBar.css"
-
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import SpecialCard from '../Wrapper/Card';
 function UserNavigationBar(props) {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const [showDropdown, setShowDropdown] = useState(false);
+    const [showSetting, setShowSetting] = useState(false)
     const [isMouseOver, setisMouseOver] = useState(
         {
             Main: false,
@@ -25,12 +27,12 @@ function UserNavigationBar(props) {
             About: false
         }
     )
-  
-    
-   
-    
+
+
+
+
     const { profile = true } = props;
-    
+
 
     function onMouseOverHandler(event) {
 
@@ -45,7 +47,7 @@ function UserNavigationBar(props) {
             return { ...prev, [event.target.name]: false }
         })
     }
-    function logoutHandleClick(event){
+    function logoutHandleClick(event) {
         axios(
             {
                 method: "post",
@@ -63,7 +65,7 @@ function UserNavigationBar(props) {
             <Navbar expand="lg" className='NavbarAttribute'>
                 <Container>
                     <span><img className='ImageResponsiveness resizeLogo' src="/images/MainLogo2.png" alt="" /></span>
-                    <Navbar.Brand className='title' href="/">
+                    <Navbar.Brand className='title goldColorHover' href="/">
 
                         Recipe Court
                     </Navbar.Brand>
@@ -125,36 +127,51 @@ function UserNavigationBar(props) {
                                 </Dropdown.Menu>
                             </Dropdown>
 
-                            
-                            <Nav.Link 
-                            className="mx-4 option-style defaultsetting"
-                            href="recipes"
+
+                            <Nav.Link
+                                className="mx-4 option-style defaultsetting"
+                                href="recipes"
                             >
-                            Recipes
+                                Find Recipes
                             </Nav.Link>
 
 
 
 
-                            <Dropdown>
-                                <Dropdown.Toggle variant="success" className="mx-4 option-style defaultsetting"  id="dropdown-basic">
-                                    Setting
-                                </Dropdown.Toggle>
+                            <Dropdown drop="end">
+                             <Nav.Link
+                                className="mx-4 option-style defaultsetting"
+                               
+                            >
+                                 <span  onClick={()=>setShowSetting(true)}>Setting</span>
+                            </Nav.Link>
+                                {/* <Dropdown.Toggle variant="success" className="mx-4 option-style defaultsetting"  id="dropdown-basic">
+                                    <span  onClick={()=>setShowSetting(true)}>Setting</span>
+                                </Dropdown.Toggle> */}
 
-                                <Dropdown.Menu >
-                                     <Dropdown.Item className='flexcentered' href={`/profile`}>
-                                   
-                                    Manage your profile
+                                
+                                    <Offcanvas placement='end' show={showSetting} onHide={() => setShowSetting(false)}>
+                                        <Offcanvas.Header closeButton>
+                                            <Offcanvas.Title className='title'>Settings</Offcanvas.Title>
+                                        </Offcanvas.Header>
+                                        <Offcanvas.Body className='settingOptions'>
+                                        <Dropdown.Item className='flexcentered' href={`/dashboard`}>Home</Dropdown.Item>
+                                    
+                                        <Dropdown.Item className='flexcentered' href={`/profile`}>Manage your profile</Dropdown.Item>
+                                        
+                                            
+                                            <Dropdown.Item className='flexcentered' href="/my-recipes">My Recipes</Dropdown.Item>
+                                            <Dropdown.Item className='flexcentered' href="/shoppinglist">My Shopping List</Dropdown.Item>
+                                            <Dropdown.Item className='flexcentered'>
 
-                                    </Dropdown.Item>
-                                    <Dropdown.Item className='flexcentered' href="/my-recipes">My Recipes</Dropdown.Item>
-                                    <Dropdown.Item className='flexcentered' href="/shoppinglist">My Shopping List</Dropdown.Item>
-                                    <Dropdown.Item  className='flexcentered'>
-                                    
-                                    <Button onClick={logoutHandleClick} style="primary">Log Out</Button>
-                                    
-                                    </Dropdown.Item>
-                                </Dropdown.Menu>
+                                                <Button onClick={logoutHandleClick} style="primary">Log Out</Button>
+
+                                            </Dropdown.Item>
+                                        </Offcanvas.Body>
+                                    </Offcanvas>
+
+                                
+
                             </Dropdown>
 
                         </Nav>

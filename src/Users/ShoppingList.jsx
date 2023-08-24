@@ -52,7 +52,7 @@ function ShoppingList(props) {
     }
     return <>
     <UserNavigationBar/>
-    <h1>Shopping List</h1>
+    <h1 className="titleSecond">Shopping List</h1>
     
     <Card>
     
@@ -61,7 +61,7 @@ function ShoppingList(props) {
    <Button className="FormButton white" variant="dark" onClick={handleSelectAll} >{"Select All"}</Button>
    <Button className="FormButton red" variant="danger" onClick={DeleteSelectedItem} >Remove selected Ingredients from list</Button>
    </div>}
-   {HideButton&&<h3 className="NoIngredientstext">Go to your Recipe and add some ingredient for your next Grocery Shopping!</h3>}
+   {HideButton&&<h3 className="NoIngredientstext">Go to your Recipes' list and add some ingredients for your next Grocery Shopping!</h3>}
     <br />
         {ListofIngredients.map((value,index)=>{
         return <label key={index}  className="form-control " >

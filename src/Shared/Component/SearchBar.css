@@ -4,17 +4,21 @@
   }
   .searchBarContainer{
     padding-top: 0.3rem;
-  
+  font-family: "Courgette";
     border: 1px solid grey;
+    color:#37b100;
+    font-size: 20px;
+    
   }
   .searchBarLine:hover{
-    border: 2px solid greenyellow;
-    transition : 800ms;
-    cursor: pointer;
+ 
+    font-family: "Montserrat";
+    transition: 300ms;
+  background-color:#37b100 ;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  border-radius: 2rem;
+  color: white;
+cursor: pointer;
 
-transform : translateY(-0px);
-background-color: #f6ffde;
-color: #8f3b15;
-border: solid 2px #8f3b15;
   }
   

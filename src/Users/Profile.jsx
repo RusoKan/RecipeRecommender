@@ -7,6 +7,7 @@ import Button from "../Shared/FormElement/Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CountryOptions from "../Shared/FormElement/CountryOptions";
+import Loading from "../Shared/Component/Loading";
 
 function Profile(props) {
   const [disableOption, setDisableOption] = useState(false)
@@ -143,7 +144,7 @@ function handlingDateOfBirth(event) {
   const inputRef = useRef({});
   
   if (!dataFetched) {
-    return <>Loading...</>;
+    return <><Loading use="pageLoad"/></>;
   }
   return <>
     <UserNavigationBar profile={false} />

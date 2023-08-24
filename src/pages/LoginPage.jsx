@@ -9,7 +9,9 @@ import { useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
+
 import { GoogleLoginButton } from "react-social-login-buttons";
+import Loading from '../Shared/Component/Loading';
 
 function LoginPage(props) {
 
@@ -77,9 +79,9 @@ function LoginPage(props) {
                     
                   <div className='flexedbox'>  <Button style="primary" type="submit">Log in</Button></div>
                 </Form>
-                {isLoading && <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>}
+                {isLoading && <Loading
+                    size="small"
+                />}
             </Card>
             <h2 style={{textAlign:"center"}}>OR</h2>
             <Card>

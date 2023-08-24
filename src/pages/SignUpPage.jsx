@@ -16,6 +16,7 @@ import { GoogleLoginButton } from "react-social-login-buttons";
 function SignUpPage(props) {
     const [Accountexist, setAccountexist] = useState(false)
     const [CreatingAccountModal,setCreatingAccountModal]=useState(false)
+    const [ThrowErrorPassword,setThrowErrorPassword]=useState(false)
         const navigate=useNavigate();
 
 
@@ -33,8 +34,16 @@ function SignUpPage(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-
-        const data = {
+        if(inputRef.current.password.value!= inputRef.current.confirmPassword.value )
+        {
+            setThrowErrorPassword(true)
+            // const timer=setTimeout(()=>{
+            //   setThrowErrorPassword(false)  
+            // },5000)
+            // clearTimeout(timer)
+        }
+        else {
+            const data = {
             first_name: inputRef.current.firstname.value,
             lastname: inputRef.current.lastname.value,
             Email: inputRef.current.email.value,
@@ -57,6 +66,7 @@ function SignUpPage(props) {
                 // Handle any errors
                 console.error(error);
             });
+        }
 
     }
 
@@ -91,11 +101,18 @@ function SignUpPage(props) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="Password">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label> Password</Form.Label>
                     <Form.Control ref={(e1) => (inputRef.current.password = e1)} type="password" placeholder="Password" />
 
                 </Form.Group>
+                <Form.Group className="mb-3" controlId="ConfirmPassword">
+                    <Form.Label> Confirm Password</Form.Label>
+                    <Form.Control ref={(e1) => (inputRef.current.confirmPassword = e1)} type="password" placeholder="Password" />
 
+                </Form.Group>
+                { ThrowErrorPassword && <Alert className="flexbox" variant="danger"  >   
+                    <p>Password do not match  </p>
+                     </Alert>}
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <Button style="primary" type="submit"  >Register</Button>
                 </div>
@@ -115,8 +132,8 @@ function SignUpPage(props) {
         <GoogleLoginButton onClick={handleAuth}><span>Sign Up With Google </span></GoogleLoginButton>
         </Card>
                             <CreateModal show={CreatingAccountModal}
-                            heading="Your account has been created succesfully!"
-                            text=" Head on to your new account to start creating your own recipes!"
+                            title="Your account has been created succesfully!"
+                            body=" Head on to your new account to start creating your own recipes!"
                             onHide={onHide}
                             >
 

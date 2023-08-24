@@ -1,6 +1,8 @@
 import React, { useEffect, useState ,useContext  } from "react";
 import axios from "axios";
+
 import { Navigate ,Outlet } from "react-router-dom";
+import Loading from "../Shared/Component/Loading";
 
 
 function RequireAuth(props) {
@@ -21,7 +23,10 @@ function RequireAuth(props) {
 
    
     if (!dataFetched ) {
-        return <>Still loading...</>;
+        return <>
+        <Loading size="margin large"/>
+        
+        </>;
       }
     
    

@@ -19,8 +19,8 @@
   }
   
   .IngredientContainer .form-control {
-    font-family: "Montserrat", sans-serif;
-    color: #8f3b15;
+    font-family: "Courgette", sans-serif;
+    color: #37b100;
     font-size: 2rem;
     font-weight: 600;
     line-height: 1.1;
@@ -59,7 +59,17 @@
     display: grid;
     place-content: center;
   }
-  
+  .titleSecond{
+    
+      font-family: 'Dancing Script', cursive;
+      font-size: 50px;
+      font-weight: 700;
+      color:#37b100 ;
+      /* color:#f79417; */
+      opacity: 75%;
+      
+    
+  }
   input[type="checkbox"]::before {
 
     content: "";

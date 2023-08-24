@@ -1,3 +1,35 @@
 .resizeLogo{
     width: 110px;
 }
+.settingOptions{
+    display: flex;
+    flex-direction: column  ;
+    justify-content: space-around;
+    /* gap: 30px; */
+    
+}
+
+.settingOptions >* {
+    font-family: 'Courgette', cursive;
+   padding:4vh 0;
+    font-size:large;
+    color:#37b100 ;
+
+    ;
+}
+.settingOptions >*:not(:last-child):hover{
+    font-family: 'Courgette', cursive;
+    transform: scale(0.9);
+    transition: 250ms;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;        color:#f79417 ;
+    ;
+}
+.goldColorHover:hover{
+    transition: 750ms;
+color:#f79417;
+}
+.goldColorHover{
+    transition: 750ms;
+}

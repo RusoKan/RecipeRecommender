@@ -1,19 +1,20 @@
 import UserNavigationBar from "../Shared/Component/UserNavigationBar"
 import { Card, Row, Col, Container, Modal, Form } from 'react-bootstrap';
-import ContainerCard from "../Shared/Wrapper/Card";
+
 import Button from "../Shared/FormElement/Button";
 import "../Shared/FormElement/Button.css"
 import Buttons from 'react-bootstrap/Button';
 import { useEffect, useState, useRef } from "react";
-import ReactStars from "react-rating-stars-component";
+
 import axios from "axios";
-import CreateModal from "../Shared/Component/Modal";
+
 import RecipeContainer from "../Shared/Component/RecipeContainer";
-import Placeholder from 'react-bootstrap/Placeholder';
+
 import "./MyRecipe.css"
 
 import PlaceholderCard from "../Shared/Component/PlaceholderCard";
 import RatingRecipe from "./../Shared/Component/RatingRecipe"
+import RecipeCard from "../Shared/Component/RecipeCard";
 
 function MyRecipes(props) {
     const [RecipeCardInfo, setRecipeCardInfo] = useState([])
@@ -27,9 +28,8 @@ function MyRecipes(props) {
         dataFromMyRecipe: false,
         dataFromLatestAddedRecipe: false,
     })
-    const inputRef = useRef({});
-    const [showReviewModal, setshowReviewModal] = useState(false)
-    const [showIngredientModal, setshowIngredientModal] = useState(false)
+    // const inputRef = useRef({});
+    
     useEffect(() => {
         axios.get("/api/MyrecipefromID")
             .then(response => {
@@ -53,6 +53,7 @@ function MyRecipes(props) {
     }, [])
 
     function handleClickRecipe(value) {
+        value=value.mealID
         setselectedMealID(value)
         const data = { search: value }
 
@@ -104,36 +105,36 @@ function MyRecipes(props) {
     }
 
     
-    const handleReview = (event) => {
-        console.log(inputRef.current.ratingText.value)
-        console.log(inputRef.current.ratingStar)
-        const data={
+    // const handleReview = (event) => {
+    //     console.log(inputRef.current.ratingText.value)
+    //     console.log(inputRef.current.ratingStar)
+    //     const data={
             
-            RecipeId:selectedMealId,
-            ratingStar:(typeof inputRef.current.ratingStar === 'undefined') ? 1: inputRef.current.ratingStar,
-            ratingText:inputRef.current.ratingText.value,
+    //         RecipeId:selectedMealId,
+    //         ratingStar:(typeof inputRef.current.ratingStar === 'undefined') ? 1: inputRef.current.ratingStar,
+    //         ratingText:inputRef.current.ratingText.value,
             
-        }
-        console.log(data)
-        axios.put("/api/ReviewForRecipe",{data})
-        .then((response)=>{
+    //     }
+    //     console.log(data)
+    //     axios.put("/api/ReviewForRecipe",{data})
+    //     .then((response)=>{
 
-        })
-    }
-    function handleAddAllIngredientsToShoppingList() {
-        const  data={
-            RecipeId:selectedMealId
-        }
+    //     })
+    // }
+    // function handleAddAllIngredientsToShoppingList() {
+    //     const  data={
+    //         RecipeId:selectedMealId
+    //     }
         
-        axios.put("/api/AddingIngredientsToShoppingList",data )
-        .then(response=>{
-            console.log(response.data)
-            setshowIngredientModal(true)
-        })
-        .catch(response=>{
+    //     axios.put("/api/AddingIngredientsToShoppingList",data )
+    //     .then(response=>{
+    //         console.log(response.data)
+    //         setshowIngredientModal(true)
+    //     })
+    //     .catch(response=>{
             
-        })
-    }
+    //     })
+    // }
     //  if(Datafetched.dataFromLatestAddedRecipe===false|| Datafetched.dataFromMyRecipe===false)
     //  {
     //     return<>
@@ -158,7 +159,7 @@ function MyRecipes(props) {
     return <>
 
         <UserNavigationBar />
-        {ShowRecentlyAddedRecipes && <h3 className="RecentlyAddedStyle">Recently Added Recipes</h3>}
+        {ShowRecentlyAddedRecipes && <h3 className="RecentlyAddedStyle ">Recently Added Recipes</h3>}
         <Container fluid  >
             <Row className="RecipeImageContainer">
                 {ShowRecentlyAddedRecipes && Datafetched.dataFromLatestAddedRecipe === false ?
@@ -169,24 +170,14 @@ function MyRecipes(props) {
                         </Col>
                     }) :
                     RecentlyAddedRecipes.map(recipe => {
-                        return <Col key={recipe.id} m={3}>
-                            <Card onClick={() => handleClickRecipe(recipe.id)} className="ZoomEffect" style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src={recipe.Image} />
-                                <Card.Body className="MyCardBodyimageResponsiveness">
-                                    <Card.Title className="MyRecipeTitle">{recipe.mealName}</Card.Title>
-                                    <Card.Text>
-                                        {recipe.MealCategory}
-                                        <br />
-                                        {recipe.Area}
-                                    </Card.Text>
-                                    <Button onClick={() => handleClickRecipe(recipe.id)} style="primary">Show me the Recipe!</Button>
-                                </Card.Body>
-                            </Card>
+                        return <Col  key={recipe.id} m={3}>
+                            <RecipeCard
+                                RecipeID={recipe.id}
+                                handleClickRecipe={handleClickRecipe}
+                            />
+ 
                         </Col>
-
-
                     })}
-
             </Row>
         </Container>
         <h1 className="RecipeTitle PageTitle">Saved Recipes</h1>
@@ -205,19 +196,12 @@ function MyRecipes(props) {
 
                     RecipeCardInfo.map(recipe => {
 
-                        return <Col m={3} key={recipe.id}>
-                            <Card onClick={() => handleClickRecipe(recipe.id)} className="ZoomEffect" style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src={recipe.Image} />
-                                <Card.Body className="MyCardBodyimageResponsiveness">
-                                    <Card.Title className="MyRecipeTitle">{recipe.mealName}</Card.Title>
-                                    <Card.Text>
-                                        {recipe.MealCategory}
-                                        <br />
-                                        {recipe.Area}
-                                    </Card.Text>
-                                    <Button onClick={() => handleClickRecipe(recipe.id)} style="primary">Show me the Recipe!</Button>
-                                </Card.Body>
-                            </Card>
+                        return <Col  key={recipe.id}>
+                            <RecipeCard
+                                RecipeID={recipe.id}
+                                handleClickRecipe={handleClickRecipe}
+                            />
+ 
                         </Col>
 
                     })}
@@ -229,7 +213,7 @@ function MyRecipes(props) {
         <Modal
             show={ShowRecipeModal}
             onHide={() => setShowRecipeModal(false)}
-            size="xl"
+            fullscreen={true}
             backdrop="static"
             aria-labelledby="contained-modal-title-vcenter"
             centered
@@ -243,7 +227,7 @@ function MyRecipes(props) {
             <Modal.Body>
 
                 <RecipeContainer
-
+                    mealID={selectedMealId}
                     mealImg={recipeData.mealImg}
                     mealName={recipeData.mealName}
                     mealtag={recipeData.mealtag}
@@ -251,10 +235,9 @@ function MyRecipes(props) {
                     mealLink={recipeData.mealLink}
                     SetRemoveRecipeButton={true}
                     SetAddReviewButton={true}
-                    handleReview={() => setshowReviewModal(true)}
                     mealIngredients={recipeData.mealIngredients}
                     mealInstruction={recipeData.mealInstruction}
-                    AddAllIngredientsToShoppingList={handleAddAllIngredientsToShoppingList}
+                    // AddAllIngredientsToShoppingList={handleAddAllIngredientsToShoppingList}
                 />
 
             </Modal.Body>
@@ -287,12 +270,12 @@ function MyRecipes(props) {
             </Modal.Footer>
         </Modal>
         
-        <CreateModal
+        {/* <CreateModal
             show={showIngredientModal}
             onHide={()=>setshowIngredientModal(false)}
             title= {` ${recipeData.mealName}`}
             body="The ingredients was succesfully Added to the Shopping List"
-        />
+        /> */}
        
 
 
@@ -303,7 +286,7 @@ function MyRecipes(props) {
 
 
 
-        <Modal show={showReviewModal} onHide={() => { setshowReviewModal(false) }}>
+        {/* <Modal show={showReviewModal} onHide={() => { setshowReviewModal(false) }}>
             <Modal.Header closeButton>
                 <Modal.Title>Review</Modal.Title>
             </Modal.Header>
@@ -340,7 +323,7 @@ function MyRecipes(props) {
                     Save Changes
                 </Button>
             </Modal.Footer>
-        </Modal>
+        </Modal> */}
     </>
 
 
