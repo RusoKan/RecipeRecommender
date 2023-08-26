@@ -13,6 +13,7 @@ import Profile from './Users/Profile';
 import Recipes from './Users/Recipes';
 import MyRecipes from './Users/MyRecipes';
 import ShoppingList from './Users/ShoppingList';
+import "./index.css"
 function App() {
   
  
