@@ -1,10 +1,4 @@
 {
-   "routes":[
-    {
-        "src":"/[^.]+",
-        "dest":"/"
-    }
-   ]
    "rewrites": [
     {
       "source": "/api/:path*",
@@ -13,6 +7,10 @@
     {
       "source": "/api/:path*/",
       "destination": "https://recipecourtserver.nn.r.appspot.com/:path*/"
+    }
+    {
+        "src":"/[^.]+",
+        "dest":"/" 
     }
   ]
 }
