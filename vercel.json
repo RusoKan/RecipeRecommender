@@ -5,4 +5,14 @@
         "dest":"/"
     }
    ]
+   "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://recipecourtserver.nn.r.appspot.com/:path*"
+    },
+    {
+      "source": "/api/:path*/",
+      "destination": "https://recipecourtserver.nn.r.appspot.com/:path*/"
+    }
+  ]
 }
