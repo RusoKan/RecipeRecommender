@@ -8,9 +8,6 @@
       "source": "/api/:path*/",
       "destination": "https://recipecourtserver.nn.r.appspot.com/:path*/"
     }
-    {
-        "src":"/[^.]+",
-        "dest":"/" 
-    }
+    {"source": "/(.*)", "destination": "/"}
   ]
 }
