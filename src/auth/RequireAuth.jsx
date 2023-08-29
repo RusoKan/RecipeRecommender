@@ -10,7 +10,7 @@ function RequireAuth(props) {
     const [dataFetched, setDataFetched] = useState(false);
   
     useEffect(() => {
-        axios.get("/api/authenticationCheck")
+        axios.get("https://recipecourtserver.nn.r.appspot.com"+"/authenticationCheck")
           .then(response => {
             setAuthentication(response.data);
             setDataFetched(true)
