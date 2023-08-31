@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://recipecourtserver.nn.r.appspot.com',
+        target: 'https://recipecourtserver.nn.r.appspot.com/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
