@@ -13,7 +13,9 @@ import Profile from './Users/Profile';
 import Recipes from './Users/Recipes';
 import MyRecipes from './Users/MyRecipes';
 import ShoppingList from './Users/ShoppingList';
+
 import "./index.css"
+import DietInfoPage from './pages/DietInfoPage';
 function App() {
   
  
@@ -28,6 +30,7 @@ function App() {
           {/* <Route path="userpage" element={<UserPage/>}/> */}
           {/* <Route path=":user" element={<UserPage />} /> */}
           {/* <Route path=":user/Profile" element={<UserPage />} /> */}
+          <Route exact path="DietInfoPage" element={<DietInfoPage/>} />
           <Route  element={<RequireAuth />}>
             {/* <Route path=":user" element={<UserPage />} /> */}
             <Route path="dashboard" element={<UserPage />} />

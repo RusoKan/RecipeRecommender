@@ -15,6 +15,7 @@ import "./MyRecipe.css"
 import PlaceholderCard from "../Shared/Component/PlaceholderCard";
 import RatingRecipe from "./../Shared/Component/RatingRecipe"
 import RecipeCard from "../Shared/Component/RecipeCard";
+import Footer from "../Shared/Component/Footer";
 
 function MyRecipes(props) {
     const [RecipeCardInfo, setRecipeCardInfo] = useState([])
@@ -324,6 +325,7 @@ function MyRecipes(props) {
                 </Button>
             </Modal.Footer>
         </Modal> */}
+        <Footer/>
     </>
 
 

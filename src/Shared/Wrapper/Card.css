@@ -2,7 +2,7 @@
 .Card-Style{
   
     margin: 1.2rem 5vw;
-    min-width: 375px;
+    min-width: 330px;
     padding: 2rem;
     border: 0.2rem   ;
   /* box-shadow: 3px 3px #c9c4c4;  */
@@ -13,7 +13,7 @@
 }
 .Card-Style:hover{
   margin: 1.2rem 5vw;
-    min-width: 375px;
+    min-width: 330px;
     padding: 2rem;
     transition: 1.5s;
    /* border: 0.2rem solid #a67c52 ;*/

@@ -5,6 +5,7 @@ import axios from "axios"
 import Form from 'react-bootstrap/Form';
 import "./ShoppingList.css"
 import { Button } from "react-bootstrap";
+import Footer from "../Shared/Component/Footer";
 function ShoppingList(props) {
     const [ListofIngredients,setListOfIngredients]=useState([])
     const [itemsTobeRemoved,setitemstoBeRemoved]=useState([])
@@ -59,7 +60,7 @@ function ShoppingList(props) {
     <div  className="IngredientContainer">
    {!HideButton&&<div className="ButtonCenteringContainer"> 
    <Button className="FormButton white" variant="dark" onClick={handleSelectAll} >{"Select All"}</Button>
-   <Button className="FormButton red" variant="danger" onClick={DeleteSelectedItem} >Remove selected Ingredients from list</Button>
+   <Button className="FormButton red" variant="danger" onClick={DeleteSelectedItem} >Remove </Button>
    </div>}
    {HideButton&&<h3 className="NoIngredientstext">Go to your Recipes' list and add some ingredients for your next Grocery Shopping!</h3>}
     <br />
@@ -76,6 +77,7 @@ function ShoppingList(props) {
     </div>
 
     </Card>
+    <Footer/>
     </>
 }
 export default ShoppingList

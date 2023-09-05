@@ -17,7 +17,6 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import SpecialCard from '../Wrapper/Card';
 function UserNavigationBar(props) {
     const navigate = useNavigate()
-    const [showDropdown, setShowDropdown] = useState(false);
     const [showSetting, setShowSetting] = useState(false)
     const [isMouseOver, setisMouseOver] = useState(
         {
@@ -72,7 +71,7 @@ function UserNavigationBar(props) {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
-                            <Dropdown
+                            {/* <Dropdown
                                 onMouseLeave={() => setShowDropdown(false)}
                                 onMouseOver={() => setShowDropdown(true)}
                             // style={{ width: '166px' }}
@@ -85,7 +84,8 @@ function UserNavigationBar(props) {
                                     Today's Meal
                                 </Dropdown.Toggle>
 
-                                <Dropdown.Menu show={showDropdown} >
+                                <Dropdown.Menu  >
+                                    
                                     <div className='flexedbox'>
                                         <Dropdown.Item href="#/action-1">
                                             <Card style={{ width: '10rem', height: "15rem" }}>
@@ -125,7 +125,7 @@ function UserNavigationBar(props) {
                                         </Dropdown.Item>
                                     </div>
                                 </Dropdown.Menu>
-                            </Dropdown>
+                            </Dropdown> */}
 
 
                             <Nav.Link
@@ -134,7 +134,12 @@ function UserNavigationBar(props) {
                             >
                                 Find Recipes
                             </Nav.Link>
-
+                            <Nav.Link
+                                className="mx-4 option-style defaultsetting"
+                                href="DietInfoPage"
+                            >
+                                Diet Information
+                            </Nav.Link>
 
 
 

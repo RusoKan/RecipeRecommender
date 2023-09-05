@@ -1,6 +1,6 @@
 .RecipeImageContainer{
     display: flex;
-    
+   
     row-gap: 5vh;
 }
 .MyRecipeTitle{
@@ -47,8 +47,9 @@
     }
     
     
+    
   }
-
+  
 
   .ZoomEffect{
     transition: 1s;

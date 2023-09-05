@@ -1,0 +1,45 @@
+.resizeImage{
+    height: 100%;
+    width:  100%;
+    border-radius:95%;
+    
+}
+.resizeImageflags{
+    width:100px;
+    height:auto;
+    
+   
+    
+}
+.CategoryTitle{
+    font-family: "Courgette",cursive;
+    color:#37b100;
+}
+.SubTitle{
+    font-family: "Courgette",cursive;
+    color:#f79417;
+}
+.Subtext{
+    font-family: "Montserrat",cursive;
+    
+}
+
+.centeredtext{
+    text-align: center;
+    padding: 15px;
+}
+
+.pageTitle{
+    font-family: "Dancing Script",cursive;
+    font-size: 5vw;
+    color:#37b100;
+}
+.filterBy{
+font-family: "Courgette",cursive;
+padding-left: 5%;
+
+color:#f79417;
+}
+.noevent{
+    pointer-events: none;
+}

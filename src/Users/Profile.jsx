@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CountryOptions from "../Shared/FormElement/CountryOptions";
 import Loading from "../Shared/Component/Loading";
+import Footer from "../Shared/Component/Footer";
 
 function Profile(props) {
   const [disableOption, setDisableOption] = useState(false)
@@ -16,6 +17,7 @@ function Profile(props) {
   const [gender,setGender]=useState("N/A")
   const[dateofBirth, setDateofBirth]=useState(null)
   const [diet,setDiet]=useState({})
+  const[submittedInfo,setSubmittedInfo]=useState(false)
   // const [checked,setChecked]=useState(null)
   // const user = DataFetching()
   useEffect(() => {
@@ -48,6 +50,7 @@ function Profile(props) {
   const navigate = useNavigate()
   
   async function handleSubmitting(event) {
+    setSubmittedInfo(true)
     let diet={}
     const ArrayofDietRestriction=[]
     event.preventDefault()
@@ -95,6 +98,7 @@ function Profile(props) {
         ArrayofDietRestriction:ArrayofDietRestriction,
         }
     }
+
     axios
       .put("/api/update", {
         first_name: inputRef.current.firstname.value,
@@ -103,6 +107,7 @@ function Profile(props) {
         gender: inputRef.current.gender.value,
         country: inputRef.current.country.value,
         Diet:diet,
+        SavedProfile:true,
         
 
       })
@@ -110,6 +115,7 @@ function Profile(props) {
         console.log("Inside", response);
         navigate(`/dashboard`, { state: { doc: response } });
         console.log(diet.ArrayofDietRestriction)
+        
       })
       .catch(err => {
         console.log(err)
@@ -144,12 +150,23 @@ function handlingDateOfBirth(event) {
   const inputRef = useRef({});
   
   if (!dataFetched) {
-    return <><Loading use="pageLoad"/></>;
+    return <>
+    <Loading use="pageLoad"/>
+    
+    </>;
+  }
+  if (submittedInfo) {
+    return <>
+    <Loading use="pageLoad"/>
+    <h1 className="title">
+      Profile is being updated...
+    </h1>
+    </>;
   }
   return <>
     <UserNavigationBar profile={false} />
 
-    <h1>PROFILE</h1>
+    <h1 className="RecipeTitle PageTitle">ProFile</h1>
 
     <Card>
       <Form onSubmit={handleSubmitting} className=" centered">
@@ -210,7 +227,7 @@ function handlingDateOfBirth(event) {
       </Form>
 
     </Card>
-
+<Footer/>
   </>
 
 }

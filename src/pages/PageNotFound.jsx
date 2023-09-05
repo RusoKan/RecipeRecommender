@@ -8,11 +8,11 @@ const  handleclick=()=>{
     navigate("/")
 }
     return <Card>
-        <h1>Uh Oh! Something Went Wrong.. :(</h1>
-        <h2 className="flexcentered">Please, Try Again Later</h2>
+        <h1 className="RecipeTitle PageTitle">Uh Oh! Something Went Wrong.. </h1>
+        <h2 className="flexcentered SubTitle">Please, Try Again Later.</h2>
         <br/>
 
-        <div className="flexcentered" onClick={handleclick}><Button style="primary"> Go back</Button></div>
+        <div className="flexcentered" onClick={handleclick}><Button style="primary"> Return to Home page</Button></div>
 
     </Card>
 

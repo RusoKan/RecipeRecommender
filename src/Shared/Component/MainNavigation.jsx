@@ -61,7 +61,7 @@ function MainNavigation(props) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Dropdown
+                        {/* <Dropdown
                             onMouseLeave={() => setShowDropdown(false)}
                             onMouseOver={() => setShowDropdown(true)}
                             // style={{ width: '166px' }}
@@ -114,7 +114,7 @@ function MainNavigation(props) {
                                     </Dropdown.Item>
                                 </div>
                             </Dropdown.Menu>
-                        </Dropdown>
+                        </Dropdown> */}
                       
                     
                         {!props.LoggedIN && login && <Nav.Link name="Login"
@@ -131,12 +131,12 @@ function MainNavigation(props) {
                             className={`mx-4 option-style ${isMouseOver.SignUp && "menu"}`}
                             href="signup">Sign up
                         </Nav.Link>}
-                        <Nav.Link
+                        {/* <Nav.Link
                             name="About" onMouseOver={onMouseOverHandler}
                             onMouseOut={onMouseOutHandler}
                             className={`mx-4 option-style ${isMouseOver.About && "menu"}`}
                             href="#link">About
-                        </Nav.Link>
+                        </Nav.Link> */}
                         {props.LoggedIN &&<Nav.Link 
                         className={`mx-4 option-style `}
                         onClick={handleMyAccountClick}

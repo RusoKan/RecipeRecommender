@@ -12,6 +12,7 @@ import "./Recipes.css"
 import RecipeContainer from "../Shared/Component/RecipeContainer"
 import RecipeCard from "../Shared/Component/RecipeCard"
 import Loading from "../Shared/Component/Loading"
+import Footer from "../Shared/Component/Footer"
 
 
 function Recipes() {
@@ -90,25 +91,25 @@ function handleClickRecipe(meal){
   mealID:meal.mealID,
 })
 }
- function handleAddRecipe() {
-    const data={
-        mealID:recipeData.mealID
-    }
-    axios.put("/api/updateRecipe",data)
-    .then((response)=>{
-        console.log(response)
-        if (response.status==201){
-            setLgShow(true)
-            setModalMessage(response.data.msg)
-        }
+//  function handleAddRecipe() {
+//     const data={
+//         mealID:recipeData.mealID
+//     }
+//     axios.put("/api/updateRecipe",data)
+//     .then((response)=>{
+//         console.log(response)
+//         if (response.status==201){
+//             setLgShow(true)
+//             setModalMessage(response.data.msg)
+//         }
          
-    })
-    .catch((error)=>{
-        setLgShow(true)
-        setModalMessage(error.response.data.msg); 
-    })
+//     })
+//     .catch((error)=>{
+//         setLgShow(true)
+//         setModalMessage(error.response.data.msg); 
+//     })
     
- }   
+//  }   
 
 
     // if(!dataFetched)
@@ -129,7 +130,7 @@ return <>
             mealName={recipeData.mealName}
             mealtag={recipeData.mealtag}
             mealCategory={recipeData.mealCat}
-            handleAddRecipe={handleAddRecipe}
+            
             SetAddRecipeButton={true}
             mealLink={recipeData.mealLink}
             mealIngredients={recipeData.mealIngredients}
@@ -220,14 +221,16 @@ return <>
             mealName={recipeData.mealName}
             mealtag={recipeData.mealtag}
             mealCategory={recipeData.mealCat}
-            handleAddRecipe={handleAddRecipe}
+            
             SetAddRecipeButton={true}
             mealLink={recipeData.mealLink}
             mealIngredients={recipeData.mealIngredients}
             mealInstruction={recipeData.mealInstruction}
           />
         </Modal.Body>
+        
       </Modal>
+      
     </>
 
 

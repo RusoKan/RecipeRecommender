@@ -5,8 +5,9 @@ import { useLocation, useNavigate ,useParams } from "react-router-dom";
 import UserNavigationBar from "../Shared/Component/UserNavigationBar";
 import "./UserPage.css"
 import SuggestionRecipe from "../Shared/Component/SuggestionRecipe";
-import { Row, Col, Container, Modal, Form } from 'react-bootstrap';
+import { Row, Col, Container, Modal, Form ,Alert } from 'react-bootstrap';
 import Card from "../Shared/Wrapper/Card";
+import Footer from "../Shared/Component/Footer";
 
 export const UserContext = createContext();
 
@@ -36,7 +37,7 @@ function UserPage(props) {
     
     
 // }
-    const navigate = useNavigate();
+   
 
 
 if (!dataFetched ) {
@@ -50,16 +51,16 @@ if (!dataFetched ) {
     
     
     <h1 className="HomePageTitle  " > Welcome <span className="TitleCase" >{CurrentAccountData.first_name}</span>  ! </h1>
-    <Card>
+    
     <SuggestionRecipe/>
 
-    </Card>
+    
 
     
 
     
         
-        
+        <Footer/>
     </div>
 
 }

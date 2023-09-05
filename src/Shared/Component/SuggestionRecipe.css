@@ -1,0 +1,17 @@
+.centeredText{
+    text-align: center;
+}
+
+@media(min-width:400px) and (max-width:670px){
+    .RecipeImageContainerforCard{
+      margin-left: 8vw;
+       
+      
+  }
+  }
+  @media (max-width:380px){
+    .RecipeImageContainerforCard{
+      margin-left: -10vw;
+       
+      
+  }}

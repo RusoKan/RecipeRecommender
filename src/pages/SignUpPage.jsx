@@ -10,6 +10,7 @@ import Alert from 'react-bootstrap/Alert';
 import { useNavigate } from "react-router-dom";
 import CreateModal from "../Shared/Component/Modal";
 import { GoogleLoginButton } from "react-social-login-buttons";
+import Footer from "../Shared/Component/Footer";
 
 
 
@@ -138,6 +139,7 @@ function SignUpPage(props) {
                             >
 
                             </CreateModal>
+                            <Footer/>
     </>
 }
 

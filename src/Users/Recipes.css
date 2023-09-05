@@ -23,11 +23,13 @@
     justify-content: center;
     display: flex;
     padding-left: 3rem;
+    
 }
 
 .RecipeImage{
-    width:28vw;
-    height: auto;
+    width:auto;
+    height:36vw;
+    margin-top:3rem;
     border-radius: 20px;
     
 }

@@ -12,6 +12,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import { GoogleLoginButton } from "react-social-login-buttons";
 import Loading from '../Shared/Component/Loading';
+import Footer from '../Shared/Component/Footer';
 
 function LoginPage(props) {
 
@@ -60,34 +61,36 @@ function LoginPage(props) {
 
     return (
         <>
-            <MainNavigation login={false} />
-
-            <Card>
-                <Title>Login</Title>
-                {!LoggedIn && <Alert className="flexbox" variant="danger"  >
-                    <p style={{ textAlign: "center" }}>Check your email and/or password again</p>
-                </Alert>}
-                <Form className='centered' onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" ref={(email) => { LoginInputs.current.loginEmail = email }} placeholder="name@example.com" />
-                    </Form.Group>
-                    <Form.Group className="mb-4" controlId="formPlaintextPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" ref={(password) => { LoginInputs.current.loginPassword = password }} placeholder="Password" />
-                    </Form.Group>
-                    
-                  <div className='flexedbox'>  <Button style="primary" type="submit">Log in</Button></div>
-                </Form>
-                {isLoading && <Loading
-                    size="small"
-                />}
+            
+                <MainNavigation login={false} />
+    
+                <Card>
+                    <Title>Login</Title>
+                    {!LoggedIn && <Alert className="flexbox" variant="danger"  >
+                        <p style={{ textAlign: "center" }}>Check your email and/or password again</p>
+                    </Alert>}
+                    <Form className='centered' onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" ref={(email) => { LoginInputs.current.loginEmail = email }} placeholder="name@example.com" />
+                        </Form.Group>
+                        <Form.Group className="mb-4" controlId="formPlaintextPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" ref={(password) => { LoginInputs.current.loginPassword = password }} placeholder="Password" />
+                        </Form.Group>
+                        
+                      <div className='flexedbox'>  <Button style="primary" type="submit">Log in</Button></div>
+                    </Form>
+                    {isLoading && <Loading
+                        size="small"
+                    />}
+                </Card>
+                <h2 style={{textAlign:"center"}}>OR</h2>
+                <Card>
+            <GoogleLoginButton onClick={handleAuth}><span>Log in With Google </span></GoogleLoginButton>
             </Card>
-            <h2 style={{textAlign:"center"}}>OR</h2>
-            <Card>
-        <GoogleLoginButton onClick={handleAuth}><span>Log in With Google </span></GoogleLoginButton>
-        </Card>
-
+    <Footer/>
+        
         </>
     )
 

@@ -5,6 +5,28 @@
 .toggleLine{
     display: none;
 }
+.linkSet{
+    text-decoration: none;
+    display:flex;
+}
+.centeringitem{
+    display: flex;
+    justify-content: center;
+    padding: 2% ;
+
+}
+.SubTitle{
+    font-family: "Courgette",cursive;
+    color:#f79417;
+}
+.opaque{
+    color:#37b100!important;
+opacity: 75%;
+}
+.fontsizeControl{
+    font-size: 50px;
+}
+
 @media (max-width:767px){
     .IngredientButton{
         display: flex;
@@ -14,4 +36,8 @@
     .toggleLine{
         display: block;
     }
+    
+}
+@media (max-width:394px){
+    
 }

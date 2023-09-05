@@ -1,21 +1,31 @@
 import { useEffect ,useState } from "react"
 import "./SuggestionRecipe.css"
 import axios from "axios"
-import {  Row, Col, Container, Modal} from 'react-bootstrap';
+import {  Row, Col, Container, Modal, Alert} from 'react-bootstrap';
 import RecipeCard from "./RecipeCard";
 import RecipeContainer from "./RecipeContainer";
 import Button from "../FormElement/Button";
 import Buttons from 'react-bootstrap/Button';
 import PlaceholderCard from "./PlaceholderCard";
+import "./SuggestionRecipe.css"
 function SuggestionRecipe(props) {
     const [RecipeID,setRecipeID]=useState([])
     const [Datafetched,setDataFetched]=useState(false)
     const [ShowRecipeModal, setShowRecipeModal] = useState(false)
     const [recipeData,setRecipe]=useState({})
+    const[AlertToUpdateProfile,setAlertToUpdateProfile]=useState(
+        {"isProfileSetup":false,
+        "message":""
+
+        })
     useEffect(() => {
         axios.get("/api/SuggestionRecipe")
             .then(response => {
                 setRecipeID(response.data.mealID)
+                
+                    setAlertToUpdateProfile({"message":response.data.msg,"isProfileSetup":response.data.isProfileSetup})
+                    console.log("PRofile",response.data.isProfileSetup)
+                
                 setDataFetched(true)
             })
     }, [])
@@ -44,13 +54,18 @@ function SuggestionRecipe(props) {
 
     return <>
         <h1 className="title">Our Suggestion for You today.</h1>
+        {!AlertToUpdateProfile.isProfileSetup&&
+        <Alert className="centeredText">
+        {AlertToUpdateProfile.message}
+        </Alert>}
         <Container fluid>
-        <Row className="RecipeImageContainer">
+        <Row className="RecipeImageContainerforCard RecipeImageContainer">
         {RecipeID.map((value, index)=>{
-           return <Col key={value}>
+           return <Col className="CardResponsiveSize" key={value}>
             <RecipeCard
             RecipeID={value}
             handleClickRecipe={handlingRecipeClick}
+            
             />
             </Col>
             
@@ -85,7 +100,8 @@ function SuggestionRecipe(props) {
                     mealCategory={recipeData.mealCategory}
                     mealLink={recipeData.mealLink}
                     SetRemoveRecipeButton={false}
-                    SetAddReviewButton={true}
+                    SetAddRecipeButton={true}
+                    SetAddReviewButton={false}
                     handleReview={() => setshowReviewModal(true)}
                     mealIngredients={recipeData.mealIngredients}
                     mealInstruction={recipeData.mealInstruction}
