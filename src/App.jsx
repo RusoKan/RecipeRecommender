@@ -30,13 +30,14 @@ function App() {
           {/* <Route path="userpage" element={<UserPage/>}/> */}
           {/* <Route path=":user" element={<UserPage />} /> */}
           {/* <Route path=":user/Profile" element={<UserPage />} /> */}
-          <Route exact path="DietInfoPage" element={<DietInfoPage/>} />
+          
           <Route  element={<RequireAuth />}>
             {/* <Route path=":user" element={<UserPage />} /> */}
             <Route path="dashboard" element={<UserPage />} />
             <Route path="profile" element={<Profile/>} />
             <Route path="recipes" element={<Recipes/>}/>
             <Route path="my-recipes" element={<MyRecipes/>}/>
+            <Route path="DietInfoPage" element={<DietInfoPage/>} />
             <Route path="shoppingList" element={<ShoppingList/>}></Route>
           </Route>
           <Route path="*" element={<PageNotFound />} />

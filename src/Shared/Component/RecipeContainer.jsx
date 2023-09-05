@@ -95,7 +95,7 @@ console.log(tag)
                   <Button onClick={handleAddRecipe} style="tertiary">Add to Your Recipe!</Button>
                   </Col>}
                   
-                  <Col xs={12} lg={6} className='centeringitem'>
+                  <Col xs={12} lg={props.SetAddRecipeButton?6:12} className='centeringitem'>
                   <a target="_blank" className='linkSet' href={props.mealLink}><Button style="tertiary">Watch a tutorial !</Button></a>
                   </Col >
                   
